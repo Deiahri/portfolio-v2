@@ -46,23 +46,53 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+/* button:hover {
   border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+} */
+
+@media (max-width: 576px) {
+  html {
+    font-size: 12px;
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media (min-width: 577px) and (max-width: 768px) {
+  html {
+    font-size: 13px;
   }
-  a:hover {
-    color: #747bff;
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  html {
+    font-size: 14px;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1439px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+
+@media (min-width: 1440px) and (max-width: 1799px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1800px) {
+  html {
+    font-size: 20px;
   }
 }
