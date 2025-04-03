@@ -13,7 +13,9 @@ export default function ProjectPage() {
   if (!projectData) {
     return <Page404 />;
   }
-  const { skills, subtitle, img, desc } = projectData;
+  const { 
+    //skills, subtitle, img, 
+    desc } = projectData;
   console.log(desc);
   return (
     <main
@@ -51,7 +53,7 @@ export default function ProjectPage() {
           display: "flex",
           width: "100%",
           justifyContent: "center",
-          flexWrap: "wrap"
+          flexWrap: "wrap",
         }}
       >
         <div
@@ -65,7 +67,9 @@ export default function ProjectPage() {
           }}
         >
           <span style={{ fontSize: "2rem", fontWeight: 900 }}>Description</span>
-          <span dangerouslySetInnerHTML={{ __html: desc.replace(/\\n/, '<br/>') }}></span>
+          <span
+            dangerouslySetInnerHTML={{ __html: desc.replace(/\\n/, "<br/>") }}
+          ></span>
         </div>
         <div
           className="w-full xs:w-3/3 md:w-3/6"
@@ -77,7 +81,7 @@ export default function ProjectPage() {
           }}
         ></div>
       </div>
-      <div style={{height: '20vh'}} />
+      <div style={{ height: "20vh" }} />
     </main>
   );
 }
