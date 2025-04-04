@@ -5,5 +5,6 @@
     height: 2.5rem;
     padding: 0rem 2.5rem 0rem 2rem;
     box-sizing: border-box;
-    clip-path: polygon(0 0, 0 100%, 100% 100%, calc(100% - 1rem) 50%, 100% 0);
+    clip-path: polygon(0 0, 0 120%, 100% 120%, calc(100% - 1rem) 50%, 100% -20%);
+    background-image: radial-gradient(circle at 50% 50%, transparent 70%, #0002 90%);
 }

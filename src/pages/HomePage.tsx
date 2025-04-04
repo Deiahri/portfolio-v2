@@ -5,8 +5,7 @@ import SkillTile from "../components/SkillTile/SkillTile";
 import { Self } from "../Self";
 import ProjectTile from "../components/ProjectTile/ProjectTile";
 import { useEffect, useRef } from "react";
-import { blue, orange } from "@/main";
-import ParallaxBG from "@/components/ParallaxBG/ParallaxBG";
+import { blue, orange } from "@/shared";
 import { useLocation } from "react-router";
 
 
@@ -21,12 +20,14 @@ export default function HomePage() {
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      window.location.hash = 'hiya';
+    }, 200);
     switch (hash) {
       case '#projects':
         scrollProjectsIntoView();
         break;
     }
-    console.log('hash', hash);
   }, [hash])
 
   return (
@@ -38,16 +39,14 @@ export default function HomePage() {
         width: "100vw",
         height: "100%",
         minHeight: "100vh",
-        position: 'relative'
+        position: 'relative',
+        zIndex: 1
       }}
     >
-      <div style={{zIndex: 1, position: 'relative'}}>
-        <TopSection />
-        <div style={{ height: "10vh" }} />
-        <SkillsSection />
-        <ProjectsSection projectSectionRef={projectSectionRef} />
-      </div>
-      <ParallaxBG/>
+    <TopSection />
+    <div style={{ height: "10vh" }} />
+    <SkillsSection />
+    <ProjectsSection projectSectionRef={projectSectionRef} />
     </main>
   );
 }

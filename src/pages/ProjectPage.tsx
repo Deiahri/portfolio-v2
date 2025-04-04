@@ -2,7 +2,6 @@ import { useNavigate, useSearchParams } from "react-router";
 import { Self } from "../Self";
 import Page404 from "./Page404";
 import MyCarousel from "@/components/MyCarousel/MyCarousel";
-import ParallaxBG from "@/components/ParallaxBG/ParallaxBG";
 import AnchorButton from "@/components/AnchorButton/AnchorButton";
 import { GetIcon } from "@/toolsTSX";
 import SkillTile from "@/components/SkillTile/SkillTile";
@@ -13,11 +12,14 @@ export default function ProjectPage() {
   if (!projectKey) {
     return <Page404 />;
   }
-  const projectTitle = projectKey.replace(/\\a/g, " ");
+  // const projectTitle = projectKey.replace(/\\a/g, " ");
+  const projectTitle = projectKey;
   const projectData = Self.projects[projectTitle];
   if (!projectData) {
     return <Page404 />;
   }
+
+
   const {
     skills,
     subtitle,
@@ -35,11 +37,11 @@ export default function ProjectPage() {
         width: "100vw",
         height: "100%",
         minHeight: "100vh",
-        backgroundColor: "#151515",
         position: "relative",
+        zIndex: 1
       }}
     >
-      <div style={{ zIndex: 1 }}>
+      <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div
           style={{
             display: "flex",
@@ -49,8 +51,7 @@ export default function ProjectPage() {
             height: "80vh",
             width: "100vw",
             gap: "1rem",
-            paddingLeft: "1rem",
-            paddingRight: "1rem",
+            padding: "0 1rem",
             boxSizing: "border-box",
             position: 'relative'
           }}
@@ -68,7 +69,7 @@ export default function ProjectPage() {
               {
                 skills.map((skill) => {
                   const skillObj = Self.skills[skill]
-                  return <SkillTile skill={skill} {...skillObj} scale={0.5} />;
+                  return <SkillTile key={`proj_${skill}`} skill={skill} {...skillObj} scale={0.5} />;
                 })
               }
             </div>
@@ -77,6 +78,7 @@ export default function ProjectPage() {
           style={{
             display: "flex",
             width: "100%",
+            maxWidth: '90vw',
             justifyContent: "center",
             flexWrap: "wrap",
           }}
@@ -88,7 +90,7 @@ export default function ProjectPage() {
               display: "flex",
               flexDirection: "column",
               alignItems: "start",
-              padding: "1rem",
+              padding: "1rem 0.5rem",
             }}
           >
             <span style={{ fontSize: "2rem", fontWeight: 900 }}>
@@ -100,7 +102,7 @@ export default function ProjectPage() {
             <div
               style={{ display: "flex", gap: "0.5rem", marginTop: "0.75rem", flexWrap: 'wrap' }}
             >
-              {buttons?.map((button) => {
+              {buttons?.map((button, bIndex) => {
                 return (
                   <AnchorButton
                     style={{
@@ -110,6 +112,7 @@ export default function ProjectPage() {
                     }}
                     target="_blank"
                     href={button.href}
+                    key={`btn_${bIndex}`}
                   >
                     {button.icon && GetIcon(button.icon, { size: '1.5rem' })}
                     {button.text}
@@ -134,7 +137,6 @@ export default function ProjectPage() {
         </div>
         <div style={{ height: "20vh" }} />
       </div>
-      <ParallaxBG />
     </main>
   );
 }

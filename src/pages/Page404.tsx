@@ -13,7 +13,8 @@ export default function Page404() {
         width: "100vw",
         height: "100%",
         minHeight: "100vh",
-        backgroundColor: "#111",
+        position: 'relative',
+        zIndex: 1
       }}
     >
         <span style={{fontSize: '2rem'}}>Uh oh</span>

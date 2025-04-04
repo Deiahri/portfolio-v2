@@ -1,4 +1,5 @@
 import React from "react";
+import { blue, orange, red } from "./shared";
 
 type Skill = {
   color: string;
@@ -6,7 +7,7 @@ type Skill = {
   containerStyle?: React.CSSProperties;
 };
 
-export type Icon = 'Code' | 'Website';
+export type Icon = "Code" | "Website" | "YouTube" | "Image";
 type ProjectButton = {
   text: string;
   icon?: Icon;
@@ -66,6 +67,10 @@ export const Self: {
       color: "#f2bb3033",
       icon: "https://cdn.iconscout.com/icon/free/png-256/free-python-logo-icon-download-in-svg-png-gif-file-formats--technology-social-media-vol-5-pack-logos-icons-2945099.png?f=webp&w=256",
     },
+    "C#": {
+      color: "#39009133",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Logo_C_sharp.svg",
+    },
     HTML: {
       color: "#d1382b33",
       icon: "https://icons.iconarchive.com/icons/cornmanthe3rd/plex/512/Other-html-5-icon.png",
@@ -86,7 +91,7 @@ export const Self: {
     },
     "Express.js": {
       color: "#9993",
-      icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4T1YOdxe--UDu6VlEaqifJFs_dIXyiJUM0A&s"
+      icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4T1YOdxe--UDu6VlEaqifJFs_dIXyiJUM0A&s",
     },
     SocketIO: {
       color: "#9993",
@@ -160,13 +165,17 @@ export const Self: {
       color: "#dd481433",
       icon: "https://cdn.worldvectorlogo.com/logos/ubuntu-4.svg",
     },
-    Render: {
-      color: "#46e3b733",
-      icon: "https://images.opencollective.com/render/521d7ba/logo/256.png",
-    },
     Django: {
       color: "#09241233",
       icon: "https://cdn.worldvectorlogo.com/logos/django.svg",
+    },
+    Arduino: {
+      color: "#66c3d533",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Arduino_IDE_logo.svg/2048px-Arduino_IDE_logo.svg.png",
+    },
+    Unity: {
+      color: "#0003",
+      icon: "/logos/unity.png",
     },
     // CMS: {
     //   color: "#59666633",
@@ -179,6 +188,7 @@ export const Self: {
     "Node.js",
     "Java",
     "Python",
+    "C#",
     "HTML",
     "CSS",
   ],
@@ -196,12 +206,18 @@ export const Self: {
     "Django",
   ],
   databases: ["Firebase", "MongoDB", "InfluxDB", "PostgreSQL", "MySQL"],
-  other: ["Github", "AWS", "MQTT", "Auth0", "Ubuntu Linux", "Render"],
+  other: ["Github", "AWS", "MQTT", "Auth0", "Ubuntu Linux", "Arduino", "Unity"],
   projects: {
     "Club Mentorship Portal": {
-      img: '/projects/img/MentorPortal.png',
-      imgs: ['/projects/img/MentorPortal.png'],
-      subtitle: 'Web App that facilitates peer-mentoring',
+      img: "/projects/uhdacm-mp/1.png",
+      imgs: [
+        "/projects/uhdacm-mp/2.png",
+        "/projects/uhdacm-mp/3.png",
+        "/projects/uhdacm-mp/4.png",
+        "/projects/uhdacm-mp/5.png",
+        "/projects/uhdacm-mp/7.png",
+      ],
+      subtitle: "Web App that facilitates peer-mentoring",
       desc: `Designed and led the development of a <b>full-stack</b> mentorship portal to streamline <b>mentor-mentee</b> management for <b>UHD ACM</b>.
       <br/>
       <br/>
@@ -219,8 +235,8 @@ export const Self: {
         "Auth0",
       ],
       banner: {
-        text: 'Live Site',
-        color: '#ff1919'
+        text: "Video Demo",
+        color: red,
       },
       buttons: [
         // {
@@ -229,66 +245,55 @@ export const Self: {
         //   icon: 'Website'
         // },
         {
-          text: 'Source Code',
-          href: 'https://github.com/UHDACM/ACM-Mentorship',
-          icon: 'Code'
-        }
-      ]
+          text: "Video Demo",
+          href: "https://www.youtube.com/watch?v=EseAN3L7BJY",
+          icon: "YouTube",
+        },
+        {
+          text: "Source Code",
+          href: "https://github.com/UHDACM/ACM-Mentorship",
+          icon: "Code",
+        },
+      ],
     },
     "UHD ACM Website": {
-      img: '/projects/uhdacm/uhdacm.png',
-      imgs: ['/projects/img/ACMWebsite.png'],
-      subtitle: 'Official website for UHD ACM chapter',
+      img: "/projects/uhdacm/uhdacm.png",
+      imgs: [
+        "/projects/uhdacm/uhdacm.png",
+        "/projects/uhdacm/2.png",
+        "/projects/uhdacm/3.png",
+        "/projects/uhdacm/4.png",
+      ],
+      subtitle: "Official website for UHD ACM chapter",
       desc: `Led the development of a <b>React-based website</b> for the UHD ACM chapter.
       <br/>
       <br/>
-      Integrated <b>Auth0</b> for secure authentication and a <b>CMS</b> for simplified content management.
-      <br/><br/>
-      Boosted <b>event participation by 60%</b> through improved online visibility and user experience.`,
-      skills: [
-        "React.js",
-        "TypeScript",
-        "Node.js",
-        "Auth0"
-      ],
-      buttons: [
-        {
-          text: 'Website',
-          href: 'https://uhdacm.org',
-          icon: 'Website'
-        }
-      ]
-    },
-    "Zero-Cost Scalable Chat": {
-      img: '/projects/img/ScalableChat.png',
-      imgs: ['/projects/img/ScalableChat.png'],
-      subtitle: 'Cost-effective real-time chat application',
-      desc: `Created a <b>real-time chat application</b> using <b>React, Express.js, and Firebase</b>, thoroughly tested via <b>Vitest</b>.
+      Boosted <b>event participation by 60%</b> through improved online visibility and user experience.
       <br/>
       <br/>
-      Implemented <b>cost-effective solutions</b>, reducing monthly operational costs to <b>$0</b> while scaling to handle <b>hundreds of real-time updates</b>.
-      <br/><br/>
-      Focused on performance optimization and efficient resource utilization for maximum scalability.`,
-      skills: [
-        "React.js",
-        "Express.js",
-        "Firebase",
-        "TypeScript",
-        "Node.js",
-        "Vitest"
-      ],
+      Will integrate <b>Auth0</b> for secure authentication and a <b>CMS</b> for simplified content management.`,
+      skills: ["React.js", "TypeScript"],
       buttons: [
         {
-          text: 'Source Code',
-          href: 'https://github.com/Deiahri/zero-cost-chat',
-          icon: 'Code'
+          text: 'Live Site',
+          href: 'https://uhdacm.org'
         }
-      ]
+      ],
+      banner: {
+        text: "Live Site",
+        color: blue,
+      },
     },
-    "Sensor Data Pipeline": {
-      img: '/projects/img/SensorPipeline.png',
-      imgs: ['/projects/img/SensorPipeline.png'],
-      subtitle: 'Real-time sensor data collection and visualization',
+    "Live Sensor Data Research": {
+      img: "/projects/sensor-data/0.png",
+      imgs: [
+        "/projects/sensor-data/0.png",
+        "/projects/sensor-data/1.png",
+        "/projects/sensor-data/2.png",
+        "/projects/sensor-data/3.png",
+        "/projects/sensor-data/4.png",
+      ],
+      subtitle: "Real-time sensor data collection and visualization",
       desc: `Engineered a <b>real-time sensor data pipeline</b>, enabling data collection, visualization, and analysis as an Undergraduate Researcher.
       <br/>
       <br/>
@@ -300,45 +305,163 @@ export const Self: {
         "MQTT",
         "InfluxDB",
         "JavaScript",
-        "Node.js"
+        "Node.js",
+        "SocketIO",
+        "Arduino",
       ],
       buttons: [
         {
-          text: 'Research Paper',
-          href: 'https://example.com/sensor-data-research',
-          icon: 'Website'
-        }
-      ]
+          text: "Video Overview",
+          href: "https://youtu.be/Y5AvJBGQfj8",
+          icon: "YouTube",
+        },
+        {
+          text: "Research Poster",
+          href: "https://drive.google.com/file/d/17HKcV653bkVtAFigOsCTfzUihP5kNjzg/view?usp=sharing",
+          icon: "Image",
+        },
+        {
+          text: "Frontend Code",
+          href: "https://github.com/Deiahri/FengPrototypeFrontend",
+          icon: "Code",
+        },
+        {
+          text: "Application Backend Code",
+          href: "https://github.com/Deiahri/FengPrototypeNTSBackend",
+          icon: "Code",
+        },
+        {
+          text: "Time-series Backend Code",
+          href: "https://github.com/Deiahri/FengPrototypeTSBackend",
+          icon: "Code",
+        },
+      ],
+      banner: {
+        text: "Video Demo",
+        color: red,
+      },
     },
-    "CrossoverGlobal Website Redesign": {
-      img: '/projects/img/CrossoverGlobal.png',
-      imgs: ['/projects/img/CrossoverGlobal.png'],
-      subtitle: 'Website redesign with cost optimization',
+    "CrossoverGlobal Website": {
+      img: "/projects/crossover/0.png",
+      imgs: ["/projects/crossover/0.png"],
+      subtitle: "Charity website redesign and cost optimization",
       desc: `Redesigned the CrossoverGlobal frontend using <b>Bootstrap</b>, and migrated hosting from Webflow to <b>Render.com</b>.
       <br/>
       <br/>
       Achieved a <b>90% reduction in operational costs</b> while enhancing site performance and user experience.
       <br/><br/>
       Implemented responsive design principles and optimized loading speeds for better user engagement.`,
+      skills: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      buttons: [
+        {
+          text: "Website",
+          href: "https://crossoverglobal.org",
+          icon: "Website",
+        },
+      ],
+      banner: {
+        text: "Live Site",
+        color: blue,
+      },
+    },
+    "TicTacToe AI": {
+      img: "/projects/tttai/0.png",
+      imgs: ["/projects/tttai/0.png"],
+      subtitle: "AI Powered Tic-Tac-Toe agent",
+      desc: `This project involves designing and implementing an AI bot to play Tic-Tac-Toe, along with a front-end interface for user interaction.
+      <br/><br/>  
+    The AI utilizes techniques such as <b>Mini-max search</b>, <b>Alpha-beta pruning</b>, and a <b>Utility-based agent</b> framework.
+    <br/><br/>  
+    Initially developed in <b>Python</b>, it was later converted to <b>JavaScript</b> to ensure accessibility via a web application.<br/><br/>
+    <em>TLDR: It never loses.</em>`,
+      skills: ["HTML", "Python", "JavaScript"],
+      banner: {
+        text: "Live Site",
+        color: blue,
+      },
+      buttons: [
+        {
+          text: "Demo",
+          href: "https://deiahri.github.io/TicTacToe.js/",
+          icon: "Website",
+        },
+        {
+          text: "Source Code",
+          href: "https://github.com/Deiahri/TicTacToe.js",
+          icon: "Code",
+        },
+      ],
+    },
+    "Darwin Effect": {
+      img: "/projects/darwineffect/2.png",
+      imgs: ["/projects/darwineffect/0.png", "/projects/darwineffect/1.png", "/projects/darwineffect/2.png"],
+      subtitle: "Simple evolution simulator",
+      desc: `The primary goal of this project was to <b>develop a game in Unity</b> centered on the concept of evolution and subsequently present it to middle school students.<br /><br />
+  The <b>implementation</b> involved drawing inspiration from a <a href="https://www.youtube.com/watch?v=r_It_X7v-1E&t=1s&ab_channel=SebastianLague" target="_blank">video by Sebastian Lague</a>, utilizing <b>Unity</b> as the chosen game engine, and employing <b>C#</b> scripts to imbue functionality into the user interface, virtual animals, and the game's soundtrack.<br /><br />
+  Notably, the entire soundtrack for this Unity-based evolution game was created by yours truly.
+</p>`,
+      skills: [
+        "Unity",
+        "C#"
+      ],
+      banner: {
+        text: "Play Game",
+        color: blue,
+      },
+      buttons: [
+        {
+          text: "Game Site",
+          href: "https://deiahri.github.io/darwin-effect",
+          icon: "Website",
+        },
+        {
+          text: "Source Code",
+          href: "https://github.com/Deiahri/darwin-effect-source-code",
+          icon: "Code",
+        },
+      ],
+    },
+    "Bank App": {
+      img: "/projects/bankapp/0.png",
+      imgs: ["/projects/bankapp/1.png", "/projects/bankapp/2.png"],
+      subtitle: "Simple bank application",
+      desc: `Developed a modern bank application adhering to the <b>Agile Cowboy Methodology</b>, showcasing expertise in critical technologies.<br /><br />
+  The <b>implementation</b> utilized <b>PostgreSQL</b> for database design and <b>Express.js</b>, a <b>Node.js</b> framework, to create a <b>REST API</b> for database interaction.<br /><br />
+  A user-friendly front-end was constructed with <b>Bootstrap</b> and <b>JavaScript</b> to communicate with the API, enabling core banking functionalities.<br /><br />
+  The application was successfully deployed on an <b>AWS EC2</b> instance, demonstrating a comprehensive understanding of full-stack development within an <b>Agile Development</b> environment.`,
       skills: [
         "HTML",
         "CSS",
         "JavaScript",
         "Bootstrap",
-        "Render"
+        "AWS",
       ],
       buttons: [
         {
-          text: 'Website',
-          href: 'https://crossoverglobal.org',
-          icon: 'Website'
-        }
-      ]
+          text: "Video Demo",
+          href: "https://www.youtube.com/watch?v=JzUQu2yAMXs",
+          icon: "YouTube",
+        },
+        {
+          text: "Frontend Code",
+          href: "https://github.com/Deiahri/BankV2",
+          icon: "Code",
+        },
+        {
+          text: "Backend Code",
+          href: "https://github.com/Deiahri/BankV2-Server",
+          icon: "Code",
+        },
+      ],
+      banner: {
+        text: "Video Demo",
+        color: red,
+      },
     },
-    "ACM E-Commerce Platform": {
-      img: '/projects/img/ECommerce.png',
-      imgs: ['/projects/img/ECommerce.png'],
-      subtitle: 'Club merchandise e-commerce platform',
+    "UHD ACM E-Store": {
+      img: "/projects/uhdstore/-1.png",
+      imgs: ["/projects/uhdstore/0.png"],
+      subtitle: "UHD Club merchandise e-commerce platform",
       desc: `Led and collaborated with a group of <b>10+ developers</b> in creating an <b>e-commerce platform</b> for ACM club merchandise.
       <br/>
       <br/>
@@ -351,24 +474,53 @@ export const Self: {
         "TypeScript",
         "Node.js",
         "Auth0",
-        "MongoDB"
+        "MongoDB",
       ],
       banner: {
-        text: 'New Project',
-        color: '#1947e8'
+        text: "WIP",
+        color: orange,
       },
       buttons: [
+        // {
+        //   text: "Store",
+        //   href: "https://store.uhdacm.org",
+        //   icon: "Website",
+        // },
+        // {
+        //   text: "Source Code",
+        //   href: "https://github.com/UHDACM/store",
+        //   icon: "Code",
+        // },
+      ],
+    },
+    "Live Chat App": {
+      img: "/projects/livechat/0.png",
+      imgs: ["/projects/livechat/0.png", "/projects/livechat/1.png"],
+      subtitle: "Cost-effective real-time chat application",
+      desc: `Created a <b>real-time chat application</b> using <b>React, Express.js, SocketIO, and Firebase</b>.
+      <br/>
+      <br/>
+      This was my introduction to <b>OAuth2</b>, specifically <b>Auth0</b>.
+      <br/>
+      <br/>
+      I used what I learned from this project to build the <a href="./project?key=Club Mentorship Portal" target="_blank">UHDACM mentorship portal</b>
+      `,
+      skills: [
+        "React.js",
+        "Express.js",
+        "Firebase",
+        "TypeScript",
+        "SocketIO",
+        "Node.js",
+        "Auth0",
+      ],
+      buttons: [
         {
-          text: 'Store',
-          href: 'https://store.uhdacm.org',
-          icon: 'Website'
+          text: "Source Code",
+          href: "https://github.com/Deiahri/zero-cost-chat",
+          icon: "Code",
         },
-        {
-          text: 'Source Code',
-          href: 'https://github.com/UHDACM/store',
-          icon: 'Code'
-        }
-      ]
+      ],
     }
   },
 };

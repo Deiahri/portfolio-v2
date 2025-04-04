@@ -57,6 +57,30 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 } */
 
+.borderGlowOnHover {
+  border: 1px #0000 solid;
+  transition: border 200ms ease-in-out;
+}
+
+.borderGlowOnHover:hover {
+  border: 1px #fff6 solid;
+}
+
+.showOnHover {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.showOnHover:hover {
+  opacity: initial;
+}
+
+@media (max-width: 768px) {
+  .showOnHover {
+    opacity: initial;
+  }
+}
+
 @media (max-width: 576px) {
   html {
     font-size: 12px;

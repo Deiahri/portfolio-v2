@@ -30,7 +30,7 @@ export default function MyCarousel({ imgs }: { imgs?: string[] }) {
   return (
     <>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0, margin: 0}}>
-        <Carousel style={{width: '100%', border: '1px solid #fff2', boxSizing: 'border-box'}} setApi={setApi} >
+        <Carousel style={{width: '100%', border: '1px solid #fff2', boxSizing: 'border-box', justifyContent: 'center'}} setApi={setApi} >
           <CarouselContent style={{ height: '20rem' }}>
             {
               (!imgs || imgs.length == 0) && <CarouselItem className="bases-1/3" style={{display: 'flex', justifyContent: 'center', padding: 0, margin: 0, width: '100%', height: '100%'}} >
@@ -41,19 +41,23 @@ export default function MyCarousel({ imgs }: { imgs?: string[] }) {
             }
             {
               imgs && imgs.map((imgSrc, index) => {
-                return <CarouselItem className="bases-1/3" style={{display: 'flex', justifyContent: 'center', padding: 0}} key={`img_${index}`} >
-                <img style={{ width: '100%', objectFit: 'cover' }} src={imgSrc} />
+                return <CarouselItem className="bases-1/3" style={{display: 'flex', alignItems: 'center', width: '100%', boxSizing: 'border-box'}} key={`img_${index}`} >
+                <img style={{ width: '100%', objectFit: 'contain', backgroundColor: '#0006' }} src={imgSrc} />
               </CarouselItem>
               })
             }
           </CarouselContent>
-          <CarouselPrevious style={{left: '0.5rem', border: '1px solid #fff2'}} />
-          <CarouselNext style={{right: '0.5rem', border: '1px solid #fff2'}} />
+          <div className="showOnHover" style={{width: '100%', height: '100%', position: 'absolute', top: 0}}>
+            <CarouselPrevious style={{left: '0.5rem', border: '1px solid #fff2'}} />
+            <CarouselNext style={{right: '0.5rem', border: '1px solid #fff2'}} />
+          </div>
         </Carousel>
         <div style={{marginTop: '0.5rem', gap: '0.5rem', display: 'flex'}}>
           {
             imgs?.map((imgSrc, index) => {
-              return <img key={`imgprev_${index}`} onClick={() => api?.scrollTo(index)} style={{width: '4rem', height: '4rem', objectFit: 'cover', border: '1px solid #fff2', boxSizing: 'border-box', cursor: 'pointer', opacity: active == index ? 1: 0.5}} src={imgSrc} />
+              return <div key={`imgprev_${index}`} style={{border: '1px solid #fff2'}}>
+                <img onClick={() => api?.scrollTo(index)} style={{width: '4rem', height: '4rem', objectFit: 'cover', boxSizing: 'border-box', cursor: 'pointer', opacity: active == index ? 1: 0.5, filter: `blur(${active == index ? 0: 2}px)`}} src={imgSrc} />
+              </div>
             })
           }
         </div>

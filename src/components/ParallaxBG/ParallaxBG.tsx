@@ -1,23 +1,30 @@
-import { blue, orange } from "@/main";
-import { useEffect, useState } from "react";
+import { blue, orange } from "@/shared";
 
+const depths = {
+  1: 240,
+  2: 900,
+};
 export default function ParallaxBG() {
-  const [scrollY, setScrollY] = useState(window.scrollY);
+  // const [scrollY, setScrollY] = useState(window.scrollY);
 
-  const scrollPercentage = scrollY/1200;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
+  
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollY(window.scrollY);
+  //   };
+    
+  //   window.addEventListener("scroll", handleScroll);
+    
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
+  
+  const depth1 = depths[1];
+  // const depth2 = depths[2];
+  const scrollPercentage = 0;
+  // const scrollPercentage = scrollY / 1200;
+  
   return (
     <div
       style={{
@@ -27,11 +34,12 @@ export default function ParallaxBG() {
         position: "absolute",
         zIndex: 0,
         backgroundColor: "#151515",
-        overflow: 'hidden'
+        overflow: "hidden",
       }}
     >
-      <div style={{
-        backgroundImage: `
+      <div
+        style={{
+          backgroundImage: `
           radial-gradient(circle at -10% -10%, ${
             blue + "99"
           } 5%, transparent 30%),
@@ -42,11 +50,34 @@ export default function ParallaxBG() {
             blue + "99"
           } 5%, transparent 30%)
           `,
-        transform: `translateY(${240*(scrollPercentage)-120}px) scale(1.2)`,
-        height: '100%',
-        width: '100%'
-        }}>
-
+          transform: `translateY(${
+            depth1 * scrollPercentage - depth1 / 2
+          }px) scale(1.2)`,
+          height: "100%",
+          width: "100%",
+        }}
+      >
+        {/* <div
+          style={{
+            transform: `translateY(${depth2 * scrollPercentage - depth2 / 2})`,
+            // width: '5rem',
+            zIndex: 0,
+            position: "absolute",
+            top: "20%",
+            left: "15%",
+            rotate: "48deg",
+            opacity: "1",
+            width: "10rem",
+          }}
+        >
+          <img
+            src="/shapes/3.png"
+            style={{
+              zIndex: 0,
+              position: "relative"
+            }}
+          />
+        </div> */}
       </div>
     </div>
   );

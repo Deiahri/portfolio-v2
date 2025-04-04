@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import HomePage from './pages/HomePage'
 import ProjectPage from './pages/ProjectPage'
 import Page404 from './pages/Page404'
+import Footer from './components/Footer/Footer'
+import ParallaxBG from './components/ParallaxBG/ParallaxBG'
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,11 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router}/>
+      <div style={{position: 'relative'}}>
+        <ParallaxBG/>
+        <RouterProvider router={router}/>
+        <Footer/>
+      </div>
     </>
   )
 }
