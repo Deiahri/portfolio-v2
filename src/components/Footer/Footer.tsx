@@ -34,9 +34,11 @@ export default function Footer() {
     <div
       style={{
         width: "100%",
-        padding: "5rem 3rem 10rem 3rem",
+        padding: "0rem 1rem",
         display: "flex",
-        justifyContent: "center",
+        flexDirection: 'column',
+        alignItems: "center",
+        boxSizing: 'border-box'
       }}
     >
       <div
@@ -44,18 +46,19 @@ export default function Footer() {
           backgroundColor: "#4446",
           backdropFilter: "blur(10px)",
           borderRadius: "1rem",
-          padding: "3rem",
+          padding: "2rem",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          boxSizing: 'border-box'
         }}
       >
         <span
-          style={{ fontSize: "3rem", fontWeight: "900", marginBottom: "-1rem" }}
+          style={{ fontSize: "2.5rem", fontWeight: "900", marginBottom: "-1rem", textAlign: 'center' }}
         >
           Like what you see?
         </span>
-        <span style={{ fontSize: "1.8rem", fontWeight: "300" }}>
+        <span style={{ fontSize: "1.8rem", fontWeight: "300", textAlign: 'center' }}>
           Reach out via Email or LinkedIn
         </span>
         <div
@@ -114,6 +117,9 @@ export default function Footer() {
           </a>
         </div>
       </div>
+      <div style={{height: '30vh'}} />
+      <span style={{color: '#fff9', fontSize: '1rem', zIndex: 0}}>Junda Yin © {new Date().getFullYear()}. All rights reserved.</span>
+      <div style={{height: '10vh'}} />
     </div>
   );
 }

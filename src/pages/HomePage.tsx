@@ -7,6 +7,7 @@ import ProjectTile from "../components/ProjectTile/ProjectTile";
 import { useEffect, useRef } from "react";
 import { blue, orange } from "@/shared";
 import { useLocation } from "react-router";
+import { FaGithub } from "react-icons/fa";
 
 
 export default function HomePage() {
@@ -302,6 +303,7 @@ function TopSection() {
           boxSizing: "border-box",
         }}
       >
+        <span style={{marginBottom: '-0.5rem'}}>Texas, USA</span>
         <div
           style={{
             display: "flex",
@@ -380,7 +382,7 @@ function TopSection() {
             and <span style={{ fontWeight: 700 }}>much more</span>
           </span>
         </div>
-        <div style={{ marginTop: "0.5rem", display: "flex", gap: "1rem" }}>
+        <div style={{ marginTop: "0.5rem", display: "flex", gap: "0.5rem", flexWrap: 'wrap', justifyContent: 'center' }}>
           <Button
             style={{ height: "3rem" }}
             onClick={() =>
@@ -392,6 +394,18 @@ function TopSection() {
           >
             <BsDownload size={"1.25rem"} style={{ marginRight: "0.5rem" }} />
             <span style={{ fontSize: "1.25rem" }}>Resume</span>
+          </Button>
+          <Button
+            style={{ height: "3rem" }}
+            onClick={() =>
+              window.open(
+                "https://github.com/Deiahri",
+                "_blank"
+              )
+            }
+          >
+            <FaGithub size={"1.25rem"} style={{ marginRight: "0.5rem" }} />
+            <span style={{ fontSize: "1.25rem" }}>Github</span>
           </Button>
           <Button style={{ height: "3rem" }} onClick={goToProjectsSection}>
             <span style={{ fontSize: "1.25rem" }}>View Projects</span>
