@@ -43,10 +43,10 @@ export default function ParallaxBG() {
           radial-gradient(circle at -10% -10%, ${
             blue + "99"
           } 5%, transparent 30%),
-          radial-gradient(circle at 130% 50%, ${
+          radial-gradient(circle at calc(60vw + 100vh) 40%, ${
             orange + "99"
-          } 5%, transparent 40%),
-          radial-gradient(circle at -10% 110%, ${
+          } 5%, transparent 30%),
+          radial-gradient(circle at -60vh 110%, ${
             blue + "99"
           } 5%, transparent 30%)
           `,
