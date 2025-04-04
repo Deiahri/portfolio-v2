@@ -54,11 +54,11 @@ export default function Footer() {
         }}
       >
         <span
-          style={{ fontSize: "2.5rem", fontWeight: "900", marginBottom: "-1rem", textAlign: 'center' }}
+          style={{ fontSize: "2.5rem", fontWeight: "698", marginBottom: "-0.5rem", textAlign: 'center' }}
         >
           Like what you see?
         </span>
-        <span style={{ fontSize: "1.8rem", fontWeight: "300", textAlign: 'center' }}>
+        <span style={{ fontSize: "1.5rem", fontWeight: "300", textAlign: 'center' }}>
           Reach out via Email or LinkedIn
         </span>
         <div

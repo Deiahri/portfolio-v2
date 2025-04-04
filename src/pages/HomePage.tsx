@@ -86,7 +86,7 @@ function ProjectsSection({
         }}
       >
         <span
-          style={{ fontSize: "2.5rem", fontWeight: 900, lineHeight: "2rem" }}
+          style={{ fontSize: "2.5rem", fontWeight: 698, lineHeight: "2rem" }}
         >
           Projects
         </span>
@@ -159,7 +159,7 @@ function SkillsSection() {
           }}
         >
           <span
-            style={{ fontSize: "2.5rem", fontWeight: 900, lineHeight: "2rem" }}
+            style={{ fontSize: "2.5rem", fontWeight: 698, lineHeight: "2rem" }}
           >
             Skills
           </span>
@@ -338,7 +338,7 @@ function TopSection() {
             style={{
               textAlign: "center",
               color: blue,
-              fontWeight: 900,
+              fontWeight: 698
             }}
           >
             Full-stack
@@ -347,7 +347,7 @@ function TopSection() {
             style={{
               textAlign: "center",
               marginLeft: "0.6rem",
-              fontWeight: 900,
+              fontWeight: 698,
             }}
           >
             application
@@ -356,7 +356,7 @@ function TopSection() {
             style={{
               textAlign: "center",
               marginLeft: "0.6rem",
-              fontWeight: 900,
+              fontWeight: 698,
             }}
           >
             Developer

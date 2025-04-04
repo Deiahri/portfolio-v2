@@ -54,5 +54,5 @@ As this is my personal portfolio, I will primarily be the one contributing to it
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. ```
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 

@@ -58,7 +58,7 @@ export default function ProjectPage() {
         >
         <AnchorButton onClick={() => navigate('../#projects')} style={{position: 'absolute', top: '2rem', left: '2rem'}}>Back</AnchorButton>
           <span
-            style={{ fontSize: "3rem", fontWeight: 900, textAlign: "center", lineHeight: '3rem', marginBottom: '-0.75rem' }}
+            style={{ fontSize: "3rem", fontWeight: 698, textAlign: "center", lineHeight: '3rem', marginBottom: '-0.75rem' }}
           >
             {projectTitle}
           </span>
@@ -93,7 +93,7 @@ export default function ProjectPage() {
               padding: "1rem 0.5rem",
             }}
           >
-            <span style={{ fontSize: "2rem", fontWeight: 900 }}>
+            <span style={{ fontSize: "2rem", fontWeight: 698 }}>
               Description
             </span>
             <span
