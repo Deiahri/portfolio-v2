@@ -1,54 +1,58 @@
-# React + TypeScript + Vite
+# Deiahri's Portfolio V2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE) [![React](https://img.shields.io/badge/React-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Shadcn UI](https://img.shields.io/badge/Shadcn_UI-000000?style=for-the-badge&logo=shadcn-ui&logoColor=white)](https://ui.shadcn.com/)
 
-Currently, two official plugins are available:
+This is the second iteration of my personal portfolio website, built as a React application to showcase my projects, skills, and technologies. It also provides a way for visitors to easily contact me. This new version aims to be more modern and visually appealing than my previous portfolio.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+* [Live Demo](#live-demo)
+* [Key Features](#key-features)
+* [Technologies Used](#technologies-used)
+* [Roadmap](#roadmap)
+* [Inspiration](#inspiration)
+* [Contributing](#contributing)
+* [License](#license)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Live Site
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+You can view the live version of my previous portfolio here: [junda.dev](https://junda.dev)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+*(The link to the new version will go here once deployed)*
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Key Features
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+* **Project Showcase:** Clearly displays my various projects with descriptions and links.
+* **Technology Overview:** Highlights the technologies and tools I am proficient in.
+* **Skills Section:** Provides an overview of my key skills.
+* **Contact Information:** Offers a straightforward way for visitors to get in touch with me.
+* **Modern Design:** Features a clean and updated design using ShadCN components.
+* **Responsive Layout:** Designed to look and function well on various screen sizes.
+
+## Technologies Used
+
+* [React](https://react.dev/)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [ShadCN](https://ui.shadcn.com/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [Vite](https://vitejs.dev/)
+
+## Roadmap
+
+In the future, I plan to implement more engaging animations to enhance the interactivity of the portfolio.
+
+## Inspiration
+
+This portfolio site was heavily inspired by the design and structure of Andrija Djordjevic's portfolio: [https://andrijaweb.vercel.app/](https://andrijaweb.vercel.app/).
+
+## Contributing
+
+As this is my personal portfolio, I will primarily be the one contributing to it. However, if you notice any issues or have suggestions, feel free to open an issue in this repository.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. ```
+
