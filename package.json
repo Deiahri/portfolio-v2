@@ -7,7 +7,7 @@
     "dev2": "concurrently \"npx tailwindcss -i ./src/tailwind.css -o ./src/tailwind_out.css --watch\" \"wait-on ./src/tailwind_out.css && vite\"",
     "dev": "vite",
     "compileTailwind": "npx tailwindcss -i ./src/tailwind.css -o ./src/tailwind_out.css",
-    "build": "tsc -b && npm run compileTailwind && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
