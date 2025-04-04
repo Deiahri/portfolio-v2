@@ -57,6 +57,7 @@ export default function ParallaxBG() {
           width: "100%",
         }}
       >
+        
         {/* <div
           style={{
             transform: `translateY(${depth2 * scrollPercentage - depth2 / 2})`,
