@@ -46,7 +46,7 @@ In the future, I plan to implement more engaging animations to enhance the inter
 
 ## Inspiration
 
-This portfolio site was heavily inspired by the design and structure of Andrija Djordjevic's portfolio: [https://andrijaweb.vercel.app/](https://andrijaweb.vercel.app/).
+This portfolio site was heavily inspired by the design and structure of Andrija Djordjevic's (@andrijaweb) portfolio: [https://andrijaweb.vercel.app/](https://andrijaweb.vercel.app/).
 
 ## Contributing
 
