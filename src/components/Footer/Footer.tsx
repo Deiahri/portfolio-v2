@@ -43,8 +43,11 @@ export default function Footer() {
     >
       <div
         style={{
-          backgroundColor: "#4446",
-          backdropFilter: "blur(10px)",
+          backgroundColor: "#222a",
+          backdropFilter: 'blur(10px)',
+          // backgroundColor: "#4446",
+          // backdropFilter: "blur(10px)",
+          border: '1px solid #fff1',
           borderRadius: "1rem",
           padding: "2rem",
           display: "flex",
