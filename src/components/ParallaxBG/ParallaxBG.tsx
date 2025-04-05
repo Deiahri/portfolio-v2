@@ -1,5 +1,5 @@
 import { blue, orange } from "@/shared";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const depths = {
   1: 1000,
