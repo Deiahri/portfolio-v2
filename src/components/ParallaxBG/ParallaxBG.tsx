@@ -1,49 +1,30 @@
 import { blue, orange } from "@/shared";
-import { useEffect, useState } from "react";
 
 const depths = {
-  1: 1000,
+  1: 240,
   2: 900,
 };
 export default function ParallaxBG() {
-  // const chaseValRef = useRef(window.scrollY);
-  const [scrollY, setScrollY] = useState(window.scrollY);
+  // const [scrollY, setScrollY] = useState(window.scrollY);
 
-  // const scrollY = scrollYRef.current;
-
-  // const setScrollY = (v: number) => {
-  //   scrollYRef.current = v;
-  // }
-
-  useEffect(() => {
-    // let ticking = false;
-
-    const handleScroll = () => {
-      // if (!ticking) {
-        requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
-          // ticking = false;
-        });
-        // ticking = true;
-      // }
-    };
+  
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollY(window.scrollY);
+  //   };
     
-    window.addEventListener("scroll", handleScroll);
-    // setInterval(() => {
-    //   const chaseVal = chaseValRef.current;
-    //   const currentVal = scrollYRef.current;
-    //   chaseValRef.current = chaseVal + ((currentVal - chaseVal) * 0.25);
-    // }, 100);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
+  //   window.addEventListener("scroll", handleScroll);
+    
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
+  
   const depth1 = depths[1];
-  const scrollPercentage = scrollY / 1200;
-
-  console.log(scrollPercentage);
-
+  // const depth2 = depths[2];
+  const scrollPercentage = 0;
+  // const scrollPercentage = scrollY / 1200;
+  
   return (
     <div
       style={{
@@ -58,16 +39,14 @@ export default function ParallaxBG() {
     >
       <div
         style={{
-          // willChange: 'transform',
-          // transition: 'transform 100ms ease-out',
           backgroundImage: `
-          radial-gradient(circle at -10% 0%, ${
+          radial-gradient(circle at -10% -10%, ${
             blue + "99"
           } 5%, transparent 30%),
           radial-gradient(circle at calc(60vw + 100vh) 40%, ${
             orange + "99"
           } 5%, transparent 30%),
-          radial-gradient(circle at -30vh 65%, ${
+          radial-gradient(circle at -60vh 110%, ${
             blue + "99"
           } 5%, transparent 30%)
           `,
@@ -78,6 +57,7 @@ export default function ParallaxBG() {
           width: "100%",
         }}
       >
+        
         {/* <div
           style={{
             transform: `translateY(${depth2 * scrollPercentage - depth2 / 2})`,
