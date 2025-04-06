@@ -273,7 +273,7 @@ function SkillsSection() {
     refArr.forEach((ref) => {
       ref.current && observer.observe(ref.current);
     });
-  }, [...refArr]);
+  }, [refArr]);
 
   return (
     <>

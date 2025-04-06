@@ -101,7 +101,7 @@ export default function ProjectPage() {
     refArr.forEach((ref) => {
       ref.current && observer.observe(ref.current);
     });
-  }, [...refArr]);
+  }, [refArr]);
 
   const [params, _] = useSearchParams();
   const projectKey = params.get("key");
