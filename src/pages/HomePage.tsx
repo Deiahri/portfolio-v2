@@ -258,11 +258,13 @@ function SkillsSection() {
           if (entry.isIntersecting) {
             Animate(entry.target.id);
             for (let ref of refArr) {
-              if (!stateMapLocalObj[ref.current!.id]) {
+              if (!stateMapLocalObj[ref.current!.id] && ref.current!.id != entry.target.id) {
+                console.log(ref.current!.id);
                 return;
               }
             }
             observer.disconnect();
+            console.log('disconnected');
           }
         });
       },

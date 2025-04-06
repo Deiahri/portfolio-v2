@@ -6,7 +6,7 @@ export default function SkillTile({
   skill,
   containerStyle,
   scale = 0.8,
-  showIcon=true,
+  showIcon=false,
   visible=true
 }: {
   color: string;
