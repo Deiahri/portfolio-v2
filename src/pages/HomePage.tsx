@@ -81,7 +81,7 @@ function ProjectsSection({
       const stateMapLocalObj: StateMapObj = {};
       const showKey = (key: string) => {
         stateMapLocalObj[key] = true;
-        setStateMap({ ...stateMapLocalObj });
+        setStateMap(prev => ({ ...prev, [key]: true }));
       };
 
       await sleep(300);
@@ -222,7 +222,7 @@ function SkillsSection() {
     async function Animate(id: string) {
       const showKey = (key: string) => {
         stateMapLocalObj[key] = true;
-        setStateMap({ ...stateMapLocalObj });
+        setStateMap(prev => ({ ...prev, [key]: true }));
       };
 
       // const showPrefixCount = async (
@@ -264,11 +264,10 @@ function SkillsSection() {
               }
             }
             observer.disconnect();
-            console.log('disconnected');
           }
         });
       },
-      { threshold: 1 }
+      { threshold: 0.4 }
     );
     refArr.forEach((ref) => {
       ref.current && observer.observe(ref.current);
@@ -480,7 +479,7 @@ function TopSection() {
       const stateMapLocalObj: StateMapObj = {};
       const showKey = (key: string) => {
         stateMapLocalObj[key] = true;
-        setStateMap({ ...stateMapLocalObj });
+        setStateMap(prev => ({ ...prev, [key]: true }));
       };
 
       await sleep(300);

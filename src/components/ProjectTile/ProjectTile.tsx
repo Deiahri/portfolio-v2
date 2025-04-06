@@ -27,7 +27,6 @@ export default function ProjectTile({ projectKey }: { projectKey: string }) {
         flexDirection: "column",
         boxSizing: "border-box",
         backgroundColor: "#222a",
-        backdropFilter: 'blur(10px)',
         borderRadius: "0.5rem",
         gap: "0.5rem",
         alignItems: "start",
@@ -127,8 +126,8 @@ export function ProjectTileBanner({
         style={{
           zIndex: 0,
           position: "absolute",
-          transform: "translateX(0.5rem) translateY(0.5rem)",
-          filter: "blur(2px)",
+          transform: "translateX(0.3rem) translateY(0.3rem)",
+          // filter: "blur(1px)",
         }}
       >
         <div
