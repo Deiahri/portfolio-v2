@@ -1,11 +1,66 @@
+import { sleep } from "@/tools";
+import { StateMapObj } from "@/types";
 import { Copy } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsLinkedin } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
 
 const email = "Junda.yin1@gmail.com";
 export default function Footer() {
+  const containingDiv = useRef<HTMLDivElement>(null);
+  const animated = useRef(false);
+  const [stateMap, setStateMap] = useState<StateMapObj>({});
+
+  const emerge = (key: string) => {
+    return stateMap[key] ? "emerge" : "";
+  };
+
+  useEffect(() => {
+    if (!containingDiv.current) {
+      return;
+    }
+
+    async function AnimateDisplay() {
+      if (animated.current) {
+        return;
+      }
+      animated.current = true;
+      const stateMapLocalObj: StateMapObj = {};
+      const showKey = (key: string) => {
+        stateMapLocalObj[key] = true;
+        setStateMap({ ...stateMapLocalObj });
+      };
+
+      showKey("container");
+      await sleep(100);
+      showKey("like");
+      await sleep(200);
+      showKey("reach");
+      await sleep(400);
+      showKey("email");
+      await sleep(100);
+      showKey("linkedin");
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            AnimateDisplay();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    observer.observe(containingDiv.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [containingDiv]);
+
   const [copied, setCopied] = useState(0);
   const TimeoutRef = useRef<NodeJS.Timeout>(undefined);
 
@@ -36,32 +91,43 @@ export default function Footer() {
         width: "100%",
         padding: "0rem 1rem",
         display: "flex",
-        flexDirection: 'column',
+        flexDirection: "column",
         alignItems: "center",
-        boxSizing: 'border-box'
+        boxSizing: "border-box",
       }}
     >
       <div
         style={{
           backgroundColor: "#222a",
-          backdropFilter: 'blur(10px)',
+          backdropFilter: "blur(10px)",
           // backgroundColor: "#4446",
           // backdropFilter: "blur(10px)",
-          border: '1px solid #fff1',
+          border: "1px solid #fff1",
           borderRadius: "1rem",
           padding: "2rem",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          boxSizing: 'border-box'
+          boxSizing: "border-box",
         }}
+        ref={containingDiv}
+        className={`emergeFromBlur ${emerge("container")}`}
       >
         <span
-          style={{ fontSize: "2.5rem", fontWeight: "698", marginBottom: "-0.5rem", textAlign: 'center' }}
+          style={{
+            fontSize: "2.5rem",
+            fontWeight: "698",
+            marginBottom: "-0.5rem",
+            textAlign: "center",
+          }}
+          className={`emergeFromBlur ${emerge("like")}`}
         >
           Like what you see?
         </span>
-        <span style={{ fontSize: "1.5rem", fontWeight: "300", textAlign: 'center' }}>
+        <span
+          style={{ fontSize: "1.5rem", fontWeight: "300", textAlign: "center" }}
+          className={`emergeFromBlur ${emerge("reach")}`}
+        >
           Reach out via Email or LinkedIn
         </span>
         <div
@@ -75,7 +141,9 @@ export default function Footer() {
         >
           <div
             onClick={CopyEmail}
-            className="borderGlowOnHover animateWidth"
+            className={`borderGlowOnHover animateWidth emergeFromBlur ${emerge(
+              "email"
+            )}`}
             style={{
               display: "flex",
               alignItems: "center",
@@ -93,8 +161,9 @@ export default function Footer() {
             </span>
             <Copy size="1.5rem" strokeWidth={2} />
           </div>
+
           <a
-            className="borderGlowOnHover"
+            className={`borderGlowOnHover emergeFromBlur ${emerge("linkedin")}`}
             style={{
               display: "flex",
               alignItems: "center",
@@ -120,9 +189,11 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <div style={{height: '30vh'}} />
-      <span style={{color: '#fff9', fontSize: '1rem', zIndex: 0}}>Junda Yin © {new Date().getFullYear()}. All rights reserved.</span>
-      <div style={{height: '10vh'}} />
+      <div style={{ height: "30vh" }} />
+      <span style={{ color: "#fff9", fontSize: "1rem", zIndex: 0 }}>
+        Junda Yin © {new Date().getFullYear()}. All rights reserved.
+      </span>
+      <div style={{ height: "10vh" }} />
     </div>
   );
 }

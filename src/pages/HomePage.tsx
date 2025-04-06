@@ -4,32 +4,35 @@ import { GoChevronRight } from "react-icons/go";
 import SkillTile from "../components/SkillTile/SkillTile";
 import { Self } from "../Self";
 import ProjectTile from "../components/ProjectTile/ProjectTile";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { blue, orange } from "@/shared";
 import { useLocation } from "react-router";
 import { FaGithub } from "react-icons/fa";
-
+import { sleep } from "@/tools";
+import { StateMapObj } from "@/types";
 
 export default function HomePage() {
   const location = useLocation();
   const projectSectionRef = useRef<HTMLDivElement>(null);
-  
   const hash = location.hash;
 
-  const scrollProjectsIntoView = () => {
-    projectSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollProjectsIntoView = (options?: ScrollIntoViewOptions) => {
+    projectSectionRef.current?.scrollIntoView(options);
   };
 
   useEffect(() => {
     setTimeout(() => {
-      window.location.hash = 'hiya';
+      window.location.hash = "hiya";
     }, 200);
     switch (hash) {
-      case '#projects':
+      case "#projects":
         scrollProjectsIntoView();
         break;
+      case "#projectss":
+        scrollProjectsIntoView({ behavior: 'smooth' });
+        break;
     }
-  }, [hash])
+  }, [hash]);
 
   return (
     <main
@@ -40,14 +43,14 @@ export default function HomePage() {
         width: "100vw",
         height: "100%",
         minHeight: "100vh",
-        position: 'relative',
-        zIndex: 1
+        position: "relative",
+        zIndex: 1,
       }}
     >
-    <TopSection />
-    <div style={{ height: "10vh" }} />
-    <SkillsSection />
-    <ProjectsSection projectSectionRef={projectSectionRef} />
+      <TopSection />
+      <div style={{ height: "10vh" }} />
+      <SkillsSection />
+      <ProjectsSection projectSectionRef={projectSectionRef} />
     </main>
   );
 }
@@ -57,6 +60,57 @@ function ProjectsSection({
 }: {
   projectSectionRef: React.RefObject<HTMLDivElement | null>;
 }) {
+  const containingDiv = useRef<HTMLDivElement>(null);
+  const animated = useRef(false);
+  const [stateMap, setStateMap] = useState<StateMapObj>({});
+
+  const emerge = (key: string) => {
+    return stateMap[key] ? "emerge" : "";
+  };
+
+  useEffect(() => {
+    if (!containingDiv.current) {
+      return;
+    }
+
+    async function AnimateDisplay() {
+      if (animated.current) {
+        return;
+      }
+      animated.current = true;
+      const stateMapLocalObj: StateMapObj = {};
+      const showKey = (key: string) => {
+        stateMapLocalObj[key] = true;
+        setStateMap({ ...stateMapLocalObj });
+      };
+
+      await sleep(300);
+      showKey("projects");
+      await sleep(300);
+      for (let i = 0; i < Object.keys(Self.projects).length; i++) {
+        await sleep(100);
+        showKey("p" + i);
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            AnimateDisplay();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+    observer.observe(containingDiv.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [containingDiv]);
+
   return (
     <div
       ref={projectSectionRef}
@@ -84,9 +138,11 @@ function ProjectsSection({
           width: "60rem",
           gap: "1rem",
         }}
+        ref={containingDiv}
       >
         <span
           style={{ fontSize: "2.5rem", fontWeight: 698, lineHeight: "2rem" }}
+          className={`floatIn ${emerge("projects")}`}
         >
           Projects
         </span>
@@ -111,10 +167,12 @@ function ProjectsSection({
               // gap: '0.5rem'
             }}
           >
-            {Object.keys(Self.projects).map((project) => {
+            {Object.keys(Self.projects).map((project, pIndex) => {
               return (
                 <div
-                  className={"w-full xss:w-3/3 sm:w-1/2 lg:w-1/3 xl:1/5"}
+                  className={`w-full xss:w-3/3 sm:w-1/2 lg:w-1/3 xl:1/5 floatIn ${emerge(
+                    "p" + pIndex
+                  )}`}
                   style={{ padding: "0.3rem", boxSizing: "border-box" }}
                   key={`proj_${project}`}
                 >
@@ -130,6 +188,91 @@ function ProjectsSection({
 }
 
 function SkillsSection() {
+  const observing = useRef(false);
+  const skillsDiv = useRef<HTMLDivElement>(null);
+
+  const languageDiv = useRef<HTMLDivElement>(null);
+  const frameLibDiv = useRef<HTMLDivElement>(null);
+  const dBDiv = useRef<HTMLDivElement>(null);
+  const otherDiv = useRef<HTMLDivElement>(null);
+
+  const refArr = [skillsDiv, languageDiv, frameLibDiv, dBDiv, otherDiv];
+
+  const [stateMap, setStateMap] = useState<StateMapObj>({});
+
+  const emerge = (key: string) => {
+    return stateMap[key] ? "emerge" : "";
+  };
+
+  useEffect(() => {
+    let allReady = true;
+    refArr.forEach((ref) => {
+      if (!ref.current) {
+        allReady = false;
+      }
+    });
+
+    if (!allReady || observing.current) {
+      return;
+    }
+    observing.current = true;
+    const targetIDs = refArr.map((ref) => ref.current!.id);
+
+    const stateMapLocalObj: StateMapObj = stateMap;
+    async function Animate(id: string) {
+      const showKey = (key: string) => {
+        stateMapLocalObj[key] = true;
+        setStateMap({ ...stateMapLocalObj });
+      };
+
+      // const showPrefixCount = async (
+      //   prefix: string,
+      //   count: number,
+      //   delayMS: number
+      // ) => {
+      //   for (let i = 0; i < count; i++) {
+      //     showKey(`${prefix}${i}`);
+      //     await sleep(delayMS);
+      //   }
+      // };
+
+      const isActive = (key: string) => {
+        return stateMapLocalObj[key] || false;
+      };
+
+      if (id == "skills" && !isActive(id)) {
+        showKey("skills");
+      } else if (
+        targetIDs.includes(id) && !isActive(id)
+      ) {
+        await sleep(200);
+        showKey(id);
+        // showPrefixCount(id, Self[id].length, 100);
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // observer.disconnect();
+          if (entry.isIntersecting) {
+            Animate(entry.target.id);
+            for (let ref of refArr) {
+              if (!stateMapLocalObj[ref.current!.id]) {
+                return;
+              }
+            }
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 1 }
+    );
+    refArr.forEach((ref) => {
+      ref.current && observer.observe(ref.current);
+    });
+  }, [...refArr]);
+
   return (
     <>
       <div
@@ -158,14 +301,27 @@ function SkillsSection() {
             gap: "1rem",
           }}
         >
-          <span
-            style={{ fontSize: "2.5rem", fontWeight: 698, lineHeight: "2rem" }}
+          <div
+            id="skills"
+            ref={skillsDiv}
+            className={`floatIn ${emerge("skills")}`}
           >
-            Skills
-          </span>
+            <span
+              style={{
+                fontSize: "2.5rem",
+                fontWeight: 698,
+                lineHeight: "2rem",
+              }}
+            >
+              Skills
+            </span>
+          </div>
           {/* Languages */}
           <div
             style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+            id="languages"
+            ref={languageDiv}
+            className={`floatIn ${emerge("languages")}`}
           >
             <span style={{ fontSize: "1.5rem" }}>Languages</span>
             <div
@@ -184,6 +340,7 @@ function SkillsSection() {
                   <SkillTile
                     key={`languages_${skill}`}
                     skill={skill}
+                    // visible={emerge("languages"+sIndex)? true:false}
                     {...skillObj}
                   />
                 );
@@ -193,6 +350,9 @@ function SkillsSection() {
 
           <div
             style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+            id="framelibs"
+            ref={frameLibDiv}
+            className={`floatIn ${emerge("framelibs")}`}
           >
             {/* Frameworks and Libraries */}
             <span style={{ fontSize: "1.5rem" }}>Frameworks and Libraries</span>
@@ -212,6 +372,7 @@ function SkillsSection() {
                   <SkillTile
                     key={`framelibs_${skill}`}
                     skill={skill}
+                    // visible={emerge("framelibs"+sIndex)? true:false}
                     {...skillObj}
                   />
                 );
@@ -221,6 +382,9 @@ function SkillsSection() {
 
           <div
             style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+            id="databases"
+            ref={dBDiv}
+            className={`floatIn ${emerge("databases")}`}
           >
             {/* Databases */}
             <span style={{ fontSize: "1.5rem" }}>Databases</span>
@@ -240,6 +404,7 @@ function SkillsSection() {
                   <SkillTile
                     key={`databases_${skill}`}
                     skill={skill}
+                    // visible={emerge("databases"+sIndex)? true:false}
                     {...skillObj}
                   />
                 );
@@ -249,6 +414,9 @@ function SkillsSection() {
 
           <div
             style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+            id="other"
+            ref={otherDiv}
+            className={`floatIn ${emerge("other")}`}
           >
             {/* Databases */}
             <span style={{ fontSize: "1.5rem" }}>Other Technology</span>
@@ -268,6 +436,7 @@ function SkillsSection() {
                   <SkillTile
                     key={`other_${skill}`}
                     skill={skill}
+                    // visible={emerge("other"+sIndex)? true:false}
                     {...skillObj}
                   />
                 );
@@ -281,16 +450,76 @@ function SkillsSection() {
 }
 
 function TopSection() {
+  const containingDiv = useRef<HTMLDivElement>(null);
+  const animated = useRef(false);
+  const [stateMap, setStateMap] = useState<StateMapObj>({});
+
   const goToProjectsSection = () => {
-    window.location.hash = '';
+    window.location.hash = "";
     setTimeout(() => {
-      window.location.hash = 'projects';
+      window.location.hash = "projectss";
     }, 10);
-  }
+  };
+
+  const emerge = (key: string) => {
+    return stateMap[key] ? "emerge" : "";
+  };
+
+  useEffect(() => {
+    if (!containingDiv.current) {
+      return;
+    }
+
+    async function AnimateDisplay() {
+      if (animated.current) {
+        return;
+      }
+      animated.current = true;
+      const stateMapLocalObj: StateMapObj = {};
+      const showKey = (key: string) => {
+        stateMapLocalObj[key] = true;
+        setStateMap({ ...stateMapLocalObj });
+      };
+
+      await sleep(300);
+      showKey("loc");
+      await sleep(300);
+      showKey("fName");
+      await sleep(300);
+      showKey("lName");
+
+      await sleep(500);
+      showKey("FAD");
+
+      await sleep(700);
+      showKey("hook");
+
+      await sleep(300);
+      showKey("buttons");
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // observer.disconnect();
+          if (entry.isIntersecting) {
+            AnimateDisplay();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(containingDiv.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [containingDiv]);
 
   return (
     <>
       <div
+        ref={containingDiv}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -303,7 +532,12 @@ function TopSection() {
           boxSizing: "border-box",
         }}
       >
-        <span style={{marginBottom: '-0.5rem'}}>Texas, USA</span>
+        <span
+          style={{ marginBottom: "-0.5rem" }}
+          className={`emergeFromBlur ${emerge("loc")}`}
+        >
+          Texas, USA
+        </span>
         <div
           style={{
             display: "flex",
@@ -312,17 +546,32 @@ function TopSection() {
             flexWrap: "wrap",
           }}
         >
-          <span
-            style={{
-              fontSize: "4rem",
-              textAlign: "center",
+          <div style={{ display: "flex", gap: "0.75rem" }}>
+            <span
+              style={{
+                fontSize: "4rem",
+                textAlign: "center",
                 // color: blue,
-              fontWeight: 200,
-              lineHeight: "3rem",
-            }}
-          >
-            Junda Yin
-          </span>
+                fontWeight: 200,
+                lineHeight: "3rem",
+              }}
+              className={`emergeFromBlur ${emerge("fName")}`}
+            >
+              Junda
+            </span>
+            <span
+              style={{
+                fontSize: "4rem",
+                textAlign: "center",
+                // color: blue,
+                fontWeight: 200,
+                lineHeight: "3rem",
+              }}
+              className={`emergeFromBlur ${emerge("lName")}`}
+            >
+              Yin
+            </span>
+          </div>
         </div>
 
         <div
@@ -333,12 +582,13 @@ function TopSection() {
             flexWrap: "wrap",
             fontSize: "2rem",
           }}
+          className={`emergeWipe ${emerge("FAD")}`}
         >
           <span
             style={{
               textAlign: "center",
               color: blue,
-              fontWeight: 698
+              fontWeight: 698,
             }}
           >
             Full-stack
@@ -376,13 +626,23 @@ function TopSection() {
             style={{
               textAlign: "center",
             }}
+            className={`emergeWipe ${emerge("hook")}`}
           >
             I develop <span style={{ color: orange }}>modern websites</span>,{" "}
-            <span style={{ color: blue }}>responsive applications</span>,
-            and <span style={{ fontWeight: 700 }}>much more</span>
+            <span style={{ color: blue }}>responsive applications</span>, and{" "}
+            <span style={{ fontWeight: 700 }}>much more</span>
           </span>
         </div>
-        <div style={{ marginTop: "0.5rem", display: "flex", gap: "0.5rem", flexWrap: 'wrap', justifyContent: 'center' }}>
+        <div
+          style={{
+            marginTop: "0.5rem",
+            display: "flex",
+            gap: "0.5rem",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+          className={`emergeFromBlur ${emerge("buttons")}`}
+        >
           <Button
             style={{ height: "3rem" }}
             onClick={() =>
@@ -397,12 +657,7 @@ function TopSection() {
           </Button>
           <Button
             style={{ height: "3rem" }}
-            onClick={() =>
-              window.open(
-                "https://github.com/Deiahri",
-                "_blank"
-              )
-            }
+            onClick={() => window.open("https://github.com/Deiahri", "_blank")}
           >
             <FaGithub size={"1.25rem"} style={{ marginRight: "0.5rem" }} />
             <span style={{ fontSize: "1.25rem" }}>Github</span>

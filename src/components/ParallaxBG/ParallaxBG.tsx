@@ -7,7 +7,6 @@ const depths = {
 export default function ParallaxBG() {
   // const [scrollY, setScrollY] = useState(window.scrollY);
 
-  
   // useEffect(() => {
   //   const handleScroll = () => {
   //     setScrollY(window.scrollY);

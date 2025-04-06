@@ -78,6 +78,63 @@ button:focus-visible {
   opacity: initial;
 }
 
+.emergeFromBlur {
+  opacity: 0;
+  filter: blur(3px);
+  transition: opacity 300ms ease-in-out, filter 300ms ease-in-out;
+}
+
+.emergeFromBlur.emerge {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+.emergeWipe {
+  clip-path: inset(0% 100% 0% 0%);
+  transition: clip-path 500ms ease-in-out;
+}
+
+.emergeWipe.emerge {
+  clip-path: inset(0% 0% 0% 0%);
+}
+
+.floatIn {
+  transform: translate(-1.5rem, 1.5rem);
+  opacity: 0;
+  transition: transform 300ms ease-in-out,
+            opacity 300ms ease-in-out;
+}
+
+.floatIn.emerge {
+  opacity: 1;
+  transform: translate(0rem, 0rem);
+}
+
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(3rem);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.dissapear {
+  opacity: initial;
+  transition: opacity 300ms ease-in-out;
+}
+
+.dissapear.active {
+  opacity: 0;
+}
+
+.animateFloat {
+  animation: floatUpDown 1.5s ease-in-out infinite;
+}
+
 @media (max-width: 768px) {
   .showOnHover {
     opacity: initial;

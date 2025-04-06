@@ -11,9 +11,9 @@ export default function ProjectTile({ projectKey }: { projectKey: string }) {
 
   const handleViewProjectClick = () => {
     navigate(`/project?key=${projectKey}`);
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 50);
+    window.scrollTo({ top: 0 });
+    // setTimeout(() => {
+    // }, 50);
   };
 
   return (

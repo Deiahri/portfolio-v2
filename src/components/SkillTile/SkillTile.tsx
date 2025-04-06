@@ -6,14 +6,16 @@ export default function SkillTile({
   skill,
   containerStyle,
   scale = 0.8,
-  showIcon=true
+  showIcon=true,
+  visible=true
 }: {
   color: string;
   icon: string;
   skill: string;
   containerStyle?: React.CSSProperties;
   scale?: number;
-  showIcon?: boolean
+  showIcon?: boolean;
+  visible?: boolean;
 }) {
   return (
     <div
@@ -24,7 +26,7 @@ export default function SkillTile({
         gap: `${0.5 * scale}rem`,
         ...containerStyle,
       }}
-      className={styles.skillTile}
+      className={`${styles.skillTile} ${styles.floatIn} ${visible ? styles.emerge : ''}`}
     >
       {showIcon&&<SkillIcon scale={scale} color={color} iconSrc={icon} />}
       <span style={{ fontSize: `${1.4 * scale}rem`, fontWeight: 300 }}>
