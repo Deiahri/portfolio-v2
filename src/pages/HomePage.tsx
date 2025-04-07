@@ -102,7 +102,7 @@ function ProjectsSection({
           }
         });
       },
-      { threshold: 0 }
+      { threshold: 0, rootMargin: '-20% 0px' }
     );
     observer.observe(containingDiv.current);
 
@@ -267,7 +267,7 @@ function SkillsSection() {
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.4, rootMargin: '-15% 0px' }
     );
     refArr.forEach((ref) => {
       ref.current && observer.observe(ref.current);
@@ -528,7 +528,7 @@ function TopSection() {
           alignItems: "center",
           height: "80vh",
           width: "100vw",
-          gap: "1rem",
+          gap: "0.75rem",
           padding: "0rem 2rem",
           boxSizing: "border-box",
         }}
@@ -582,6 +582,7 @@ function TopSection() {
             alignItems: "center",
             flexWrap: "wrap",
             fontSize: "2rem",
+            lineHeight: '2rem'
           }}
           className={`emergeWipe ${emerge("FAD")}`}
         >

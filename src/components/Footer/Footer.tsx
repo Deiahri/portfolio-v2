@@ -52,7 +52,7 @@ export default function Footer() {
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.6, rootMargin: '-10% 0px' }
     );
     observer.observe(containingDiv.current);
 

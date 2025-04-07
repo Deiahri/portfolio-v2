@@ -58,6 +58,7 @@ export function SkillIcon({
         display: "flex",
       }}
     >
+      
       <img
         style={{
           objectFit: "contain",
