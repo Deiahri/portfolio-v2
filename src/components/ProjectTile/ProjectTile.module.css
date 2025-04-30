@@ -9,3 +9,28 @@
     clip-path: polygon(0 0, 0 120%, 100% 120%, calc(100% - 1rem) 50%, 100% -20%);
     background-image: radial-gradient(circle at 50% 50%, transparent 70%, #0002 90%);
 }
+
+.ProjectViewButton {
+    filter: brightness(100%);
+    transition: filter 100ms ease-in-out;
+}
+
+.ProjectViewButton:hover {
+    filter: brightness(110%);
+}
+
+.ProjectViewButton:hover .ProjectViewButtonContent {
+    animation: ChevronJiggle 300ms ease-in-out 1;
+}
+
+@keyframes ChevronJiggle {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(0.25rem);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

@@ -85,9 +85,10 @@ export default function ProjectTile({ projectKey }: { projectKey: string }) {
             bottom: "0.75rem",
             right: "0.75rem",
           }}
+          className={styles.ProjectViewButton}
         >
           <span style={{ fontWeight: 700, marginRight: "0.3rem" }}>View</span>
-          <GoChevronRight strokeWidth={0.2} size={"1.5rem"} />
+          <GoChevronRight className={styles.ProjectViewButtonContent} strokeWidth={0.2} size={"1.5rem"} />
         </button>
       </div>
     </div>
