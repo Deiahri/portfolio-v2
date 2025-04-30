@@ -1,5 +1,5 @@
 import React from "react";
-import { blue, orange, red } from "./shared";
+import { blue, red } from "./shared";
 
 type Skill = {
   color: string;
@@ -457,70 +457,6 @@ export const Self: {
         text: "Video Demo",
         color: red,
       },
-    },
-    "UHD ACM E-Store": {
-      img: "/projects/uhdstore/-1.png",
-      imgs: ["/projects/uhdstore/0.png"],
-      subtitle: "UHD Club merchandise e-commerce platform",
-      desc: `Led and collaborated with a group of <b>10+ developers</b> in creating an <b>e-commerce platform</b> for ACM club merchandise.
-      <br/>
-      <br/>
-      Used <b>Auth0</b> for authentication, created <b>RESTful APIs</b> with <b>Express.js</b>, and built a frontend using <b>React</b>.
-      <br/><br/>
-      Implemented secure payment processing and inventory management features for a complete shopping experience.`,
-      skills: [
-        "React.js",
-        "Express.js",
-        "TypeScript",
-        "Node.js",
-        "Auth0",
-        "MongoDB",
-      ],
-      banner: {
-        text: "WIP",
-        color: orange,
-      },
-      buttons: [
-        // {
-        //   text: "Store",
-        //   href: "https://store.uhdacm.org",
-        //   icon: "Website",
-        // },
-        // {
-        //   text: "Source Code",
-        //   href: "https://github.com/UHDACM/store",
-        //   icon: "Code",
-        // },
-      ],
-    },
-    "Live Chat App": {
-      img: "/projects/livechat/0.png",
-      imgs: ["/projects/livechat/0.png", "/projects/livechat/1.png"],
-      subtitle: "Cost-effective real-time chat application",
-      desc: `Created a <b>real-time chat application</b> using <b>React, Express.js, SocketIO, and Firebase</b>.
-      <br/>
-      <br/>
-      This was my introduction to <b>OAuth2</b>, specifically <b>Auth0</b>.
-      <br/>
-      <br/>
-      I used what I learned from this project to build the <a href="./project?key=Club Mentorship Portal" target="_blank">UHDACM mentorship portal</b>
-      `,
-      skills: [
-        "React.js",
-        "Express.js",
-        "Firebase",
-        "TypeScript",
-        "SocketIO",
-        "Node.js",
-        "Auth0",
-      ],
-      buttons: [
-        {
-          text: "Source Code",
-          href: "https://github.com/Deiahri/zero-cost-chat",
-          icon: "Code",
-        },
-      ],
     }
   },
 };
