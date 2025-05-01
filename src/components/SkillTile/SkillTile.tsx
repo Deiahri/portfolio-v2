@@ -24,6 +24,7 @@ export default function SkillTile({
         padding: `${0.5 * scale}rem`,
         borderRadius: `${0.8 * scale}rem`,
         gap: `${0.5 * scale}rem`,
+        filter: 'unset',
         ...containerStyle,
       }}
       className={`${styles.skillTile} ${styles.floatIn} ${visible ? styles.emerge : ''}`}
@@ -36,6 +37,8 @@ export default function SkillTile({
     </div>
   );
 }
+
+// lets add comment here
 
 export function SkillIcon({
   color,
@@ -73,3 +76,5 @@ export function SkillIcon({
     </div>
   );
 }
+
+// and here
