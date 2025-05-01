@@ -507,6 +507,9 @@ function TopSection() {
 
       await sleep(300);
       showKey("buttons");
+
+      await sleep(300);
+      showKey("skillIndicator");
     }
 
     const observer = new IntersectionObserver(
@@ -682,7 +685,7 @@ function TopSection() {
             />
           </Button>
         </div>
-        <div className={`animateFloat dissapear ${scrolledPast ? 'active' : ''}`} style={{marginTop: '3rem', marginBottom: '-5rem', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div className={`animateFloat dissapear ${scrolledPast||!emerge("skillIndicator") ? 'active' : ''}`} style={{marginTop: '3rem', marginBottom: '-5rem', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
           <span style={{fontSize: '1.1rem', fontWeight: 500, marginBottom: '-0.25rem'}}>Skills</span>
           <IoIosArrowRoundDown size={'3rem'}/>
         </div>
