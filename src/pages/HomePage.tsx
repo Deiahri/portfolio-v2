@@ -10,6 +10,7 @@ import { useLocation } from "react-router";
 import { FaGithub } from "react-icons/fa";
 import { sleep } from "@/tools";
 import { StateMapObj } from "@/types";
+import { IoIosArrowRoundDown } from "react-icons/io";
 
 export default function HomePage() {
   const location = useLocation();
@@ -454,6 +455,7 @@ function TopSection() {
   const containingDiv = useRef<HTMLDivElement>(null);
   const animated = useRef(false);
   const [stateMap, setStateMap] = useState<StateMapObj>({});
+  const [scrolledPast, setScrolledPast] = useState(false);
 
   const goToProjectsSection = () => {
     window.location.hash = "";
@@ -470,6 +472,14 @@ function TopSection() {
     if (!containingDiv.current) {
       return;
     }
+
+    const CheckScrolledPast = () => {
+      if (window.scrollY > 250) {
+        setScrolledPast(true);
+      }
+    }
+
+    window.addEventListener('scroll', CheckScrolledPast);
 
     async function AnimateDisplay() {
       if (animated.current) {
@@ -671,6 +681,10 @@ function TopSection() {
               style={{ marginLeft: "0.5rem", marginRight: "-0.7rem" }}
             />
           </Button>
+        </div>
+        <div className={`animateFloat dissapear ${scrolledPast ? 'active' : ''}`} style={{marginTop: '3rem', marginBottom: '-5rem', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <span style={{fontSize: '1.1rem', fontWeight: 500, marginBottom: '-0.25rem'}}>Skills</span>
+          <IoIosArrowRoundDown size={'3rem'}/>
         </div>
       </div>
     </>
