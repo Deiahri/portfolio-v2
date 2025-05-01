@@ -3,3 +3,4 @@ export function sleep(ms: number) {
 }
 
 // Skill section indicator fix comment
+// skill icon fix comment

@@ -25,6 +25,11 @@ export default function SkillTile({
         borderRadius: `${0.8 * scale}rem`,
         gap: `${0.5 * scale}rem`,
         filter: 'unset',
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+        MozUserSelect: 'none',
+        msTouchSelect: 'none',
+        msUserSelect: 'none',
         ...containerStyle,
       }}
       className={`${styles.skillTile} ${styles.floatIn} ${visible ? styles.emerge : ''}`}
@@ -59,9 +64,10 @@ export function SkillIcon({
         aspectRatio: 1 / 1,
         boxSizing: "border-box",
         display: "flex",
+
+        // prevent users from selecting text
       }}
     >
-      
       <img
         style={{
           objectFit: "contain",
