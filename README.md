@@ -7,9 +7,9 @@
 
 This is the second iteration of my personal portfolio website, built as a React application to showcase my projects, skills, and technologies. It also provides a way for visitors to easily contact me. This new version aims to be more modern and visually appealing than my previous portfolio.
 
-## Table of Contents
+[Live Page](https://junda.dev)
 
-* [Live Demo](#live-demo)
+## Table of Contents
 * [Key Features](#key-features)
 * [Technologies Used](#technologies-used)
 * [Roadmap](#roadmap)
