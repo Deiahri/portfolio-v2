@@ -679,7 +679,7 @@ function TopSection() {
             <GoChevronRight
               size={"1.5rem"}
               style={{ marginLeft: "0.5rem", marginRight: "-0.7rem" }}
-            />style={{}} 
+            />
           </Button>
         </div>
         <div className={`animateFloat dissapear ${scrolledPast ? 'active' : ''}`} style={{marginTop: '3rem', marginBottom: '-5rem', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
