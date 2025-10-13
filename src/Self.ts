@@ -21,13 +21,19 @@ type Banner = {
 
 type Project = {
   img: string;
-  imgs: string[];
+  imgs: CarouselItem[];
   skills: string[];
   subtitle: string;
   desc: string;
   media?: string[];
   buttons?: ProjectButton[];
   banner?: Banner;
+};
+
+export interface CarouselItem {
+  type: 'image' | 'video' | 'youtube';
+  src: string;
+  thumbnail?: string;
 };
 
 type Projects = {
@@ -95,7 +101,7 @@ export const Self: {
     },
     SocketIO: {
       color: "#9993",
-      icon: "https://static-00.iconduck.com/assets.00/socket-io-icon-512x511-xjp7kzx6.png",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/9/96/Socket-io.svg",
     },
     Tailwind: {
       color: "#35bef833",
@@ -103,7 +109,7 @@ export const Self: {
     },
     Jest: {
       color: "#8f96b133",
-      icon: "https://static-00.iconduck.com/assets.00/jest-icon-1855x2048-ifiupldr.png",
+      icon: "/logos/jest.webp",
     },
     Vitest: {
       color: "#729b1a33",
@@ -133,7 +139,7 @@ export const Self: {
     },
     InfluxDB: {
       color: "#5dc2ef33",
-      icon: "https://static-00.iconduck.com/assets.00/influxdb-icon-2017x2048-38lz5101.png",
+      icon: "/logos/influxdb.svg",
     },
     PostgreSQL: {
       color: "#2f679233",
@@ -159,7 +165,7 @@ export const Self: {
     },
     Auth0: {
       color: "#ec531f33",
-      icon: "https://static-00.iconduck.com/assets.00/auth0-icon-1832x2048-ewzjrdwk.png",
+      icon: "/logos/auth0.png",
     },
     "Ubuntu Linux": {
       color: "#dd481433",
@@ -211,19 +217,19 @@ export const Self: {
     "Club Mentorship Portal": {
       img: "/projects/uhdacm-mp/1.png",
       imgs: [
-        "/projects/uhdacm-mp/2.png",
-        "/projects/uhdacm-mp/3.png",
-        "/projects/uhdacm-mp/4.png",
-        "/projects/uhdacm-mp/5.png",
-        "/projects/uhdacm-mp/7.png",
+        { type: "youtube", src: 'EseAN3L7BJY', thumbnail: "/projects/uhdacm-mp/2.png" },
+        { type: "image", src: "/projects/uhdacm-mp/2.png" },
+        { type: "image", src: "/projects/uhdacm-mp/3.png" },
+        { type: "image", src: "/projects/uhdacm-mp/4.png" },
+        { type: "image", src: "/projects/uhdacm-mp/5.png" },
+        { type: "image", src: "/projects/uhdacm-mp/7.png" },
       ],
       subtitle: "Web App that facilitates peer-mentoring",
-      desc: `Designed and led the development of a <b>full-stack</b> mentorship portal to streamline <b>mentor-mentee</b> management for <b>UHD ACM</b>.
-      <br/>
-      <br/>
-      Implemented <b>Auth0</b> for secure authentication, <b>SocketIO</b> for real-time updates and messaging, and built a robust <b>back-end</b> using <b>Firebase, Express.js, and WebSockets</b>. 
-      <br/><br/>
-      Successfully supported <b>20+ concurrent users</b>, ensuring seamless performance and user engagement.`,
+      desc: `I led a developers, designers, and social science students to build the UHD ACM Mentorship Portal, a localized platform connecting UHD students with mentors for real-world guidance.
+<br/><br/>
+Together, we designed, tested, and launched the MVP using React, Express.js, and Firebase, onboarding 30+ users and facilitating over 130 messages.
+<br/><br/>
+The project highlights collaborative, open-source development and a shared mission to make mentorship more accessible to the UHD community.`,
       skills: [
         "React.js",
         "Express.js",
@@ -239,16 +245,6 @@ export const Self: {
         color: red,
       },
       buttons: [
-        // {
-        //   text: 'Live site',
-        //   href: 'https://mentorship.uhdacm.org',
-        //   icon: 'Website'
-        // },
-        {
-          text: "Video Demo",
-          href: "https://www.youtube.com/watch?v=EseAN3L7BJY",
-          icon: "YouTube",
-        },
         {
           text: "Source Code",
           href: "https://github.com/UHDACM/ACM-Mentorship",
@@ -259,25 +255,25 @@ export const Self: {
     "UHD ACM Website": {
       img: "/projects/uhdacm/uhdacm.png",
       imgs: [
-        "/projects/uhdacm/uhdacm.png",
-        "/projects/uhdacm/2.png",
-        "/projects/uhdacm/3.png",
-        "/projects/uhdacm/4.png",
+        { type: 'youtube', src: 'yke5VbC_7vU', thumbnail: '/projects/uhdacm/yt1-thumb.png' },
+        { type: "image", src: "/projects/uhdacm/uhdacm.png" },
+        { type: "image", src: "/projects/uhdacm/2.png" },
+        { type: "image", src: "/projects/uhdacm/3.png" },
+        { type: "image", src: "/projects/uhdacm/4.png" },
       ],
       subtitle: "Official website for UHD ACM chapter",
-      desc: `Led the development of a <b>React-based website</b> for the UHD ACM chapter.
-      <br/>
-      <br/>
-      Boosted <b>event participation by 60%</b> through improved online visibility and user experience.
-      <br/>
-      <br/>
-      Will integrate <b>Auth0</b> for secure authentication and a <b>CMS</b> for simplified content management.`,
+      desc: `I led the redesign of the UHD ACM Club website, turning it from a static page into a dynamic CMS platform serving 200+ members.
+<br/><br/>
+Built with Next.js and Strapi, it boosted event attendance by 233% and made content updates effortless.
+<br/><br/>
+See it live at uhdacm.org
+<br/>(or click the button below).`,
       skills: ["React.js", "TypeScript"],
       buttons: [
         {
-          text: 'Live Site',
-          href: 'https://uhdacm.org'
-        }
+          text: "Live Site",
+          href: "https://uhdacm.org",
+        },
       ],
       banner: {
         text: "Live Site",
@@ -287,11 +283,12 @@ export const Self: {
     "Live Sensor Data Research": {
       img: "/projects/sensor-data/0.png",
       imgs: [
-        "/projects/sensor-data/0.png",
-        "/projects/sensor-data/1.png",
-        "/projects/sensor-data/2.png",
-        "/projects/sensor-data/3.png",
-        "/projects/sensor-data/4.png",
+        { type: "youtube", src: 'Y5AvJBGQfj8', thumbnail: "/projects/sensor-data/0.png" },
+        { type: "image", src: "/projects/sensor-data/0.png" },
+        { type: "image", src: "/projects/sensor-data/1.png" },
+        { type: "image", src: "/projects/sensor-data/2.png" },
+        { type: "image", src: "/projects/sensor-data/3.png" },
+        { type: "image", src: "/projects/sensor-data/4.png" },
       ],
       subtitle: "Real-time sensor data collection and visualization",
       desc: `Engineered a <b>real-time sensor data pipeline</b>, enabling data collection, visualization, and analysis as an Undergraduate Researcher.
@@ -310,11 +307,6 @@ export const Self: {
         "Arduino",
       ],
       buttons: [
-        {
-          text: "Video Overview",
-          href: "https://youtu.be/Y5AvJBGQfj8",
-          icon: "YouTube",
-        },
         {
           text: "Research Poster",
           href: "https://drive.google.com/file/d/17HKcV653bkVtAFigOsCTfzUihP5kNjzg/view?usp=sharing",
@@ -343,7 +335,9 @@ export const Self: {
     },
     "CrossoverGlobal Website": {
       img: "/projects/crossover/0.png",
-      imgs: ["/projects/crossover/0.png"],
+      imgs: [
+        { type: "image", src: "/projects/crossover/0.png" },
+      ],
       subtitle: "Charity website redesign and cost optimization",
       desc: `Redesigned the CrossoverGlobal frontend using <b>Bootstrap</b>, and migrated hosting from Webflow to <b>Render.com</b>.
       <br/>
@@ -366,7 +360,9 @@ export const Self: {
     },
     "TicTacToe AI": {
       img: "/projects/tttai/0.png",
-      imgs: ["/projects/tttai/0.png"],
+      imgs: [
+        { type: "image", src: "/projects/tttai/0.png" },
+      ],
       subtitle: "AI Powered Tic-Tac-Toe agent",
       desc: `This project involves designing and implementing an AI bot to play Tic-Tac-Toe, along with a front-end interface for user interaction.
       <br/><br/>  
@@ -394,16 +390,18 @@ export const Self: {
     },
     "Darwin Effect": {
       img: "/projects/darwineffect/2.png",
-      imgs: ["/projects/darwineffect/0.png", "/projects/darwineffect/1.png", "/projects/darwineffect/2.png"],
+      imgs: [
+        { type: "youtube", src: '0s5xiqYdGEM', thumbnail: "/projects/darwineffect/0.png" },
+        { type: "image", src: '/projects/darwineffect/0.png' },
+        { type: "image", src: "/projects/darwineffect/1.png" },
+        { type: "image", src: "/projects/darwineffect/2.png" },
+      ],
       subtitle: "Simple evolution simulator",
       desc: `The primary goal of this project was to <b>develop a game in Unity</b> centered on the concept of evolution and subsequently present it to middle school students.<br /><br />
   The <b>implementation</b> involved drawing inspiration from a <a href="https://www.youtube.com/watch?v=r_It_X7v-1E&t=1s&ab_channel=SebastianLague" target="_blank">video by Sebastian Lague</a>, utilizing <b>Unity</b> as the chosen game engine, and employing <b>C#</b> scripts to imbue functionality into the user interface, virtual animals, and the game's soundtrack.<br /><br />
   Notably, the entire soundtrack for this Unity-based evolution game was created by yours truly.
 </p>`,
-      skills: [
-        "Unity",
-        "C#"
-      ],
+      skills: ["Unity", "C#"],
       banner: {
         text: "Play Game",
         color: blue,
@@ -423,25 +421,18 @@ export const Self: {
     },
     "Bank App": {
       img: "/projects/bankapp/0.png",
-      imgs: ["/projects/bankapp/1.png", "/projects/bankapp/2.png"],
+      imgs: [
+        { type: "youtube", src: 'JzUQu2yAMXs', thumbnail: "/projects/bankapp/1.png" },
+        { type: "image", src: "/projects/bankapp/1.png" },
+        { type: "image", src: "/projects/bankapp/2.png" },
+      ],
       subtitle: "Simple bank application",
       desc: `Developed a modern bank application adhering to the <b>Agile Cowboy Methodology</b>, showcasing expertise in critical technologies.<br /><br />
   The <b>implementation</b> utilized <b>PostgreSQL</b> for database design and <b>Express.js</b>, a <b>Node.js</b> framework, to create a <b>REST API</b> for database interaction.<br /><br />
   A user-friendly front-end was constructed with <b>Bootstrap</b> and <b>JavaScript</b> to communicate with the API, enabling core banking functionalities.<br /><br />
   The application was successfully deployed on an <b>AWS EC2</b> instance, demonstrating a comprehensive understanding of full-stack development within an <b>Agile Development</b> environment.`,
-      skills: [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Bootstrap",
-        "AWS",
-      ],
+      skills: ["HTML", "CSS", "JavaScript", "Bootstrap", "AWS", "PostgreSQL"],
       buttons: [
-        {
-          text: "Video Demo",
-          href: "https://www.youtube.com/watch?v=JzUQu2yAMXs",
-          icon: "YouTube",
-        },
         {
           text: "Frontend Code",
           href: "https://github.com/Deiahri/BankV2",
@@ -457,6 +448,6 @@ export const Self: {
         text: "Video Demo",
         color: red,
       },
-    }
+    },
   },
 };

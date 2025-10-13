@@ -40,7 +40,6 @@ export default function ProjectPage() {
 
     const stateMapLocalObj: StateMapObj = stateMap;
     async function Animate(id: string) {
-      console.log(id);
       const showKey = (key: string) => {
         stateMapLocalObj[key] = true;
         setStateMap({ ...stateMapLocalObj });
@@ -96,7 +95,7 @@ export default function ProjectPage() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.5, rootMargin: '10px' }
     );
     refArr.forEach((ref) => {
       ref.current && observer.observe(ref.current);
@@ -140,7 +139,7 @@ export default function ProjectPage() {
         }}
       >
         <AnchorButton
-          onClick={() => navigate("../#projects")}
+          onClick={() => navigate("../?scrollTo=projects")}
           style={{ position: "absolute", top: "2rem", left: "2rem", zIndex: 2 }}
         >
           Back
@@ -151,11 +150,11 @@ export default function ProjectPage() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            height: "90vh",
+            paddingTop: '8rem',
+            height: "70vh",
             width: "100vw",
             gap: "1rem",
             padding: "0 1rem",
-            boxSizing: "border-box",
             position: "relative",
           }}
           id="headDiv"
@@ -200,7 +199,13 @@ export default function ProjectPage() {
             })}
           </div>
 
-          <IoIosArrowRoundDown style={{marginTop: '2rem'}} className={`animateFloat dissapear ${(emerge('desc') || emerge('carousel')) ? 'active' : ''}`} size={'3rem'}/>
+          <IoIosArrowRoundDown
+            style={{ marginTop: "2rem" }}
+            className={`animateFloat dissapear ${
+              emerge("desc") || emerge("carousel") ? "active" : ""
+            }`}
+            size={"3rem"}
+          />
         </div>
         <div
           style={{
@@ -209,8 +214,25 @@ export default function ProjectPage() {
             maxWidth: "90vw",
             justifyContent: "center",
             flexWrap: "wrap",
+            gap: "0.5rem",
+            boxSizing: "border-box",
           }}
         >
+          <div
+            className={`w-full xs:w-3/3 md:w-3/6 floatIn ${emerge("carousel")}`}
+            id="carousel"
+            ref={CarouselDiv}
+            style={{
+              // backgroundColor: "#f552",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              maxWidth: "95vw",
+            }}
+          >
+            <MyCarousel imgs={imgs} />
+          </div>
           <div
             className={`w-full xs:w-3/3 md:w-2/5 floatIn ${emerge("desc")}`}
             style={{
@@ -248,6 +270,7 @@ export default function ProjectPage() {
                     target="_blank"
                     href={button.href}
                     key={`btn_${bIndex}`}
+                    className="ooshiny"
                   >
                     {button.icon && GetIcon(button.icon, { size: "1.5rem" })}
                     {button.text}
@@ -255,21 +278,6 @@ export default function ProjectPage() {
                 );
               })}
             </div>
-          </div>
-          <div
-            className={`w-full xs:w-3/3 md:w-3/6 floatIn ${emerge("carousel")}`}
-            id="carousel"
-            ref={CarouselDiv}
-            style={{
-              // backgroundColor: "#f552",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              maxWidth: "95vw",
-            }}
-          >
-            <MyCarousel imgs={imgs} />
           </div>
         </div>
         <div style={{ height: "20vh" }} />

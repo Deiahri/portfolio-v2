@@ -6,34 +6,28 @@ import { Self } from "../Self";
 import ProjectTile from "../components/ProjectTile/ProjectTile";
 import { useEffect, useRef, useState } from "react";
 import { blue, orange } from "@/shared";
-import { useLocation } from "react-router";
+import { useSearchParams } from "react-router";
 import { FaGithub } from "react-icons/fa";
 import { sleep } from "@/tools";
 import { StateMapObj } from "@/types";
 import { IoIosArrowRoundDown } from "react-icons/io";
 
 export default function HomePage() {
-  const location = useLocation();
+  const [params, setParams] = useSearchParams();
   const projectSectionRef = useRef<HTMLDivElement>(null);
-  const hash = location.hash;
 
   const scrollProjectsIntoView = (options?: ScrollIntoViewOptions) => {
     projectSectionRef.current?.scrollIntoView(options);
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      window.location.hash = "hiya";
-    }, 200);
-    switch (hash) {
-      case "#projects":
-        scrollProjectsIntoView();
-        break;
-      case "#projectss":
+    switch (params.get('scrollTo')) {
+      case "projects":
         scrollProjectsIntoView({ behavior: 'smooth' });
+        setParams({});
         break;
     }
-  }, [hash]);
+  }, [params]);
 
   return (
     <main
@@ -260,7 +254,6 @@ function SkillsSection() {
             Animate(entry.target.id);
             for (let ref of refArr) {
               if (!stateMapLocalObj[ref.current!.id] && ref.current!.id != entry.target.id) {
-                console.log(ref.current!.id);
                 return;
               }
             }
@@ -456,11 +449,11 @@ function TopSection() {
   const animated = useRef(false);
   const [stateMap, setStateMap] = useState<StateMapObj>({});
   const [scrolledPast, setScrolledPast] = useState(false);
+  const [_, setParams] = useSearchParams();
 
   const goToProjectsSection = () => {
-    window.location.hash = "";
     setTimeout(() => {
-      window.location.hash = "projectss";
+      setParams({ scrollTo: "projects" });
     }, 10);
   };
 
