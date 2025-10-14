@@ -63,7 +63,7 @@ button:focus-visible {
 
 .borderGlowOnHover {
   border: 1px #0000 solid;
-  transition: border 200ms ease-in-out;
+  transition: border 100ms ease-in-out;
 }
 
 .borderGlowOnHover:hover {
@@ -138,12 +138,6 @@ button:focus-visible {
 .ooshiny {
   position: relative;
   overflow: hidden;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
 }
 
 .ooshiny::before {
@@ -177,6 +171,21 @@ button:focus-visible {
     left: 150%;
   }
 }
+
+/* For WebKit browsers */
+::-webkit-scrollbar {
+  width: 10px;              /* Adjust thickness */
+}
+
+::-webkit-scrollbar-track {
+  background: #242424;  /* Dark background */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff9d258e; /* Solid color (blue example) */
+  border-radius: 8px;        /* Rounded corners (optional) */
+}
+
 
 @media (max-width: 768px) {
   .showOnHover {

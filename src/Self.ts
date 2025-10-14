@@ -31,10 +31,10 @@ type Project = {
 };
 
 export interface CarouselItem {
-  type: 'image' | 'video' | 'youtube';
+  type: "image" | "video" | "youtube";
   src: string;
   thumbnail?: string;
-};
+}
 
 type Projects = {
   [projectName: string]: Project;
@@ -183,6 +183,10 @@ export const Self: {
       color: "#0003",
       icon: "/logos/unity.png",
     },
+    Strapi: {
+      color: "#2f7bb633",
+      icon: "/logos/strapi.jpeg",
+    },
     // CMS: {
     //   color: "#59666633",
     //   icon: "https://cdn-icons-png.flaticon.com/512/1575/1575309.png",
@@ -212,12 +216,25 @@ export const Self: {
     "Django",
   ],
   databases: ["Firebase", "MongoDB", "InfluxDB", "PostgreSQL", "MySQL"],
-  other: ["Github", "AWS", "MQTT", "Auth0", "Ubuntu Linux", "Arduino", "Unity"],
+  other: [
+    "Github",
+    "AWS",
+    // "MQTT",
+    "Auth0",
+    "Ubuntu Linux",
+    "Arduino",
+    "Unity",
+    "Strapi",
+  ],
   projects: {
     "Club Mentorship Portal": {
       img: "/projects/uhdacm-mp/1.png",
       imgs: [
-        { type: "youtube", src: 'EseAN3L7BJY', thumbnail: "/projects/uhdacm-mp/2.png" },
+        {
+          type: "youtube",
+          src: "EseAN3L7BJY",
+          thumbnail: "/projects/uhdacm-mp/2.png",
+        },
         { type: "image", src: "/projects/uhdacm-mp/2.png" },
         { type: "image", src: "/projects/uhdacm-mp/3.png" },
         { type: "image", src: "/projects/uhdacm-mp/4.png" },
@@ -241,7 +258,7 @@ The project highlights collaborative, open-source development and a shared missi
         "Auth0",
       ],
       banner: {
-        text: "Video Demo",
+        text: "Video",
         color: red,
       },
       buttons: [
@@ -255,7 +272,11 @@ The project highlights collaborative, open-source development and a shared missi
     "UHD ACM Website": {
       img: "/projects/uhdacm/uhdacm.png",
       imgs: [
-        { type: 'youtube', src: 'yke5VbC_7vU', thumbnail: '/projects/uhdacm/yt1-thumb.png' },
+        {
+          type: "youtube",
+          src: "yke5VbC_7vU",
+          thumbnail: "/projects/uhdacm/yt1-thumb.png",
+        },
         { type: "image", src: "/projects/uhdacm/uhdacm.png" },
         { type: "image", src: "/projects/uhdacm/2.png" },
         { type: "image", src: "/projects/uhdacm/3.png" },
@@ -268,7 +289,7 @@ Built with Next.js and Strapi, it boosted event attendance by 233% and made cont
 <br/><br/>
 See it live at uhdacm.org
 <br/>(or click the button below).`,
-      skills: ["React.js", "TypeScript"],
+      skills: ["Next.js", "React.js", "TypeScript", "Strapi"],
       buttons: [
         {
           text: "Live Site",
@@ -283,7 +304,11 @@ See it live at uhdacm.org
     "Live Sensor Data Research": {
       img: "/projects/sensor-data/0.png",
       imgs: [
-        { type: "youtube", src: 'Y5AvJBGQfj8', thumbnail: "/projects/sensor-data/0.png" },
+        {
+          type: "youtube",
+          src: "Y5AvJBGQfj8",
+          thumbnail: "/projects/sensor-data/0.png",
+        },
         { type: "image", src: "/projects/sensor-data/0.png" },
         { type: "image", src: "/projects/sensor-data/1.png" },
         { type: "image", src: "/projects/sensor-data/2.png" },
@@ -329,15 +354,13 @@ See it live at uhdacm.org
         },
       ],
       banner: {
-        text: "Video Demo",
+        text: "Video",
         color: red,
       },
     },
     "CrossoverGlobal Website": {
       img: "/projects/crossover/0.png",
-      imgs: [
-        { type: "image", src: "/projects/crossover/0.png" },
-      ],
+      imgs: [{ type: "image", src: "/projects/crossover/0.png" }],
       subtitle: "Charity website redesign and cost optimization",
       desc: `Redesigned the CrossoverGlobal frontend using <b>Bootstrap</b>, and migrated hosting from Webflow to <b>Render.com</b>.
       <br/>
@@ -360,9 +383,7 @@ See it live at uhdacm.org
     },
     "TicTacToe AI": {
       img: "/projects/tttai/0.png",
-      imgs: [
-        { type: "image", src: "/projects/tttai/0.png" },
-      ],
+      imgs: [{ type: "image", src: "/projects/tttai/0.png" }],
       subtitle: "AI Powered Tic-Tac-Toe agent",
       desc: `This project involves designing and implementing an AI bot to play Tic-Tac-Toe, along with a front-end interface for user interaction.
       <br/><br/>  
@@ -391,8 +412,12 @@ See it live at uhdacm.org
     "Darwin Effect": {
       img: "/projects/darwineffect/2.png",
       imgs: [
-        { type: "youtube", src: '0s5xiqYdGEM', thumbnail: "/projects/darwineffect/0.png" },
-        { type: "image", src: '/projects/darwineffect/0.png' },
+        {
+          type: "youtube",
+          src: "0s5xiqYdGEM",
+          thumbnail: "/projects/darwineffect/0.png",
+        },
+        { type: "image", src: "/projects/darwineffect/0.png" },
         { type: "image", src: "/projects/darwineffect/1.png" },
         { type: "image", src: "/projects/darwineffect/2.png" },
       ],
@@ -403,7 +428,7 @@ See it live at uhdacm.org
 </p>`,
       skills: ["Unity", "C#"],
       banner: {
-        text: "Play Game",
+        text: "Live Game",
         color: blue,
       },
       buttons: [
@@ -422,7 +447,11 @@ See it live at uhdacm.org
     "Bank App": {
       img: "/projects/bankapp/0.png",
       imgs: [
-        { type: "youtube", src: 'JzUQu2yAMXs', thumbnail: "/projects/bankapp/1.png" },
+        {
+          type: "youtube",
+          src: "JzUQu2yAMXs",
+          thumbnail: "/projects/bankapp/1.png",
+        },
         { type: "image", src: "/projects/bankapp/1.png" },
         { type: "image", src: "/projects/bankapp/2.png" },
       ],
@@ -445,7 +474,7 @@ See it live at uhdacm.org
         },
       ],
       banner: {
-        text: "Video Demo",
+        text: "Video",
         color: red,
       },
     },

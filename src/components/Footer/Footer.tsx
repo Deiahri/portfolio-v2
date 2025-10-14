@@ -151,7 +151,7 @@ export default function Footer() {
             }}
           >
             <TfiEmail size="2rem" />
-            <span style={{ fontSize: "1.25rem" }}>
+            <span style={{ fontSize: "1.25rem", userSelect: 'none' }}>
               {copied == 0 ? "Junda.yin1@gmail.com" : ""}
               {copied == 1 ? "Copied!" : ""}
               {copied == -1 ? "Copy Error" : ""}
@@ -168,7 +168,7 @@ export default function Footer() {
               borderRadius: "1rem",
               padding: "0.5rem 1rem",
             }}
-            href="https://www.linkedin.com/in/junda-yin-0b162615b/"
+            href="https://www.linkedin.com/in/junda-yin/"
             target="_blank"
           >
             <BsLinkedin size="2rem" />
@@ -178,6 +178,7 @@ export default function Footer() {
                 color: "white",
                 cursor: "pointer",
                 textDecoration: "underline",
+
               }}
             >
               Junda Yin

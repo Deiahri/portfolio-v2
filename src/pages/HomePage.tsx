@@ -670,7 +670,7 @@ function TopSection() {
             <FaGithub size={"1.25rem"} style={{ marginRight: "0.5rem" }} />
             <span style={{ fontSize: "1.25rem" }}>Github</span>
           </Button>
-          <Button style={{ height: "3rem" }} onClick={goToProjectsSection}>
+          <Button className={'ooshiny'} style={{ height: "3rem" }} onClick={goToProjectsSection}>
             <span style={{ fontSize: "1.25rem" }}>View Projects</span>
             <GoChevronRight
               size={"1.5rem"}
