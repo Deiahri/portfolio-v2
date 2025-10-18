@@ -242,7 +242,7 @@ export const Self: {
         { type: "image", src: "/projects/uhdacm-mp/7.png" },
       ],
       subtitle: "Web App that facilitates peer-mentoring",
-      desc: `I led a developers, designers, and social science students to build the UHD ACM Mentorship Portal, a localized platform connecting UHD students with mentors for real-world guidance.
+      desc: `I led developers, designers, and social science students to build the UHD ACM Mentorship Portal, a localized platform connecting UHD students with mentors for real-world guidance.
 <br/><br/>
 Together, we designed, tested, and launched the MVP using React, Express.js, and Firebase, onboarding 30+ users and facilitating over 130 messages.
 <br/><br/>
@@ -285,7 +285,7 @@ The project highlights collaborative, open-source development and a shared missi
       subtitle: "Official website for UHD ACM chapter",
       desc: `I led the redesign of the UHD ACM Club website, turning it from a static page into a dynamic CMS platform serving 200+ members.
 <br/><br/>
-Built with Next.js and Strapi, it boosted event attendance by 233% and made content updates effortless.
+Built with Next.js and Strapi, it boosted event attendance by 50% and made content updates effortless.
 <br/><br/>
 See it live at uhdacm.org
 <br/>(or click the button below).`,
