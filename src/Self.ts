@@ -294,6 +294,12 @@ See it live at uhdacm.org
         {
           text: "Live Site",
           href: "https://uhdacm.org",
+          icon: 'Website'
+        },
+        {
+          text: "Source Code",
+          href: "https://github.com/Deiahri/portfolio-v2",
+          icon: 'Code'
         },
       ],
       banner: {
