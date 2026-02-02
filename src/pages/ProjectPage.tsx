@@ -9,6 +9,9 @@ import { sleep } from "@/tools";
 import { useEffect, useRef, useState } from "react";
 import { StateMapObj } from "@/types";
 import { IoIosArrowRoundDown } from "react-icons/io";
+import { usePostHog } from "@posthog/react";
+import useAnalytics from "@/hooks/useAnalytics";
+import Footer from "@/components/Footer/Footer";
 export default function ProjectPage() {
   const observing = useRef(false);
   const headDiv = useRef<HTMLDivElement>(null);
@@ -19,6 +22,7 @@ export default function ProjectPage() {
   const refArr = [headDiv, descriptionDiv, CarouselDiv];
 
   const [stateMap, setStateMap] = useState<StateMapObj>({});
+  const { posthog } = useAnalytics();
 
   const emerge = (key: string) => {
     return stateMap[key] ? "emerge" : "";
@@ -48,7 +52,7 @@ export default function ProjectPage() {
       const showPrefixCount = async (
         prefix: string,
         count: number,
-        delayMS: number
+        delayMS: number,
       ) => {
         for (let i = 0; i < count; i++) {
           showKey(`${prefix}${i}`);
@@ -95,7 +99,7 @@ export default function ProjectPage() {
           }
         });
       },
-      { threshold: 0.5, rootMargin: '10px' }
+      { threshold: 0.5, rootMargin: "10px" },
     );
     refArr.forEach((ref) => {
       ref.current && observer.observe(ref.current);
@@ -139,7 +143,12 @@ export default function ProjectPage() {
         }}
       >
         <AnchorButton
-          onClick={() => navigate("../?scrollTo=projects")}
+          onClick={() => {
+            posthog?.capture("back_to_projects_clicked", {
+              from_project: projectTitle,
+            });
+            navigate("../?scrollTo=projects");
+          }}
           style={{ position: "absolute", top: "2rem", left: "2rem", zIndex: 2 }}
         >
           Back
@@ -150,7 +159,7 @@ export default function ProjectPage() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            paddingTop: '8rem',
+            paddingTop: "8rem",
             height: "70vh",
             width: "100vw",
             gap: "1rem",
@@ -271,6 +280,14 @@ export default function ProjectPage() {
                     href={button.href}
                     key={`btn_${bIndex}`}
                     className="ooshiny"
+                    onClick={() => {
+                      posthog?.capture("project_link_clicked", {
+                        project_name: projectTitle,
+                        link_text: button.text,
+                        link_href: button.href,
+                        link_icon: button.icon,
+                      });
+                    }}
                   >
                     {button.icon && GetIcon(button.icon, { size: "1.5rem" })}
                     {button.text}
@@ -282,6 +299,7 @@ export default function ProjectPage() {
         </div>
         <div style={{ height: "20vh" }} />
       </div>
+      <Footer />
     </main>
   );
 }

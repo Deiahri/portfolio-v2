@@ -7,13 +7,17 @@ import {
   CarouselItem as CarouselItem,
 } from "@/components/ui/carousel";
 import { CarouselItem as CarouselItemType } from "@/Self";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import YouTubeEmbed from "../YouTubeEmbed/YouTubeEmbed";
 import { FaCirclePlay } from "react-icons/fa6";
+import { usePostHog } from "@posthog/react";
+import useAnalytics from "@/hooks/useAnalytics";
 
 export default function MyCarousel({ imgs }: { imgs?: CarouselItemType[] }) {
   const [api, setApi] = useState<CarouselApi>();
   const [active, setActive] = useState(0);
+    const { posthog } = useAnalytics()
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     if (!api) {
@@ -21,9 +25,20 @@ export default function MyCarousel({ imgs }: { imgs?: CarouselItemType[] }) {
     }
 
     api.on("select", () => {
-      setActive(api.selectedScrollSnap());
+      const newIndex = api.selectedScrollSnap();
+      setActive(newIndex);
+
+      // Only track after initial render (avoid tracking the initial load)
+      if (!isFirstRender.current && imgs && imgs[newIndex]) {
+        posthog?.capture('carousel_slide_changed', {
+          slide_index: newIndex,
+          slide_type: imgs[newIndex].type,
+          total_slides: imgs.length,
+        });
+      }
+      isFirstRender.current = false;
     });
-  }, [api]);
+  }, [api, imgs, posthog]);
 
   return (
     <>

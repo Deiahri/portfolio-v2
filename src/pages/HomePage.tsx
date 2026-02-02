@@ -11,6 +11,8 @@ import { FaGithub } from "react-icons/fa";
 import { sleep } from "@/tools";
 import { StateMapObj } from "@/types";
 import { IoIosArrowRoundDown } from "react-icons/io";
+import useAnalytics from "@/hooks/useAnalytics";
+import Footer from "@/components/Footer/Footer";
 
 export default function HomePage() {
   const [params, setParams] = useSearchParams();
@@ -46,6 +48,7 @@ export default function HomePage() {
       <div style={{ height: "10vh" }} />
       <SkillsSection />
       <ProjectsSection projectSectionRef={projectSectionRef} />
+      <Footer/>
     </main>
   );
 }
@@ -450,11 +453,30 @@ function TopSection() {
   const [stateMap, setStateMap] = useState<StateMapObj>({});
   const [scrolledPast, setScrolledPast] = useState(false);
   const [_, setParams] = useSearchParams();
+    const { posthog } = useAnalytics()
 
   const goToProjectsSection = () => {
+    posthog?.capture('view_projects_clicked');
     setTimeout(() => {
       setParams({ scrollTo: "projects" });
     }, 10);
+  };
+
+  const handleResumeClick = () => {
+    posthog?.capture('resume_clicked', {
+      resume_url: 'https://drive.google.com/file/d/1ubDxHPiYgDOHqFL1l_cwv0TLkLQvwoOP/view?usp=sharing'
+    });
+    window.open(
+      "https://drive.google.com/file/d/1ubDxHPiYgDOHqFL1l_cwv0TLkLQvwoOP/view?usp=sharing",
+      "_blank"
+    );
+  };
+
+  const handleGithubClick = () => {
+    posthog?.capture('github_profile_clicked', {
+      github_url: 'https://github.com/Deiahri'
+    });
+    window.open("https://github.com/Deiahri", "_blank");
   };
 
   const emerge = (key: string) => {
@@ -653,19 +675,14 @@ function TopSection() {
         >
           <Button
             style={{ height: "3rem" }}
-            onClick={() =>
-              window.open(
-                "https://drive.google.com/file/d/1ubDxHPiYgDOHqFL1l_cwv0TLkLQvwoOP/view?usp=sharing",
-                "_blank"
-              )
-            }
+            onClick={handleResumeClick}
           >
             <BsDownload size={"1.25rem"} style={{ marginRight: "0.5rem" }} />
             <span style={{ fontSize: "1.25rem" }}>Resume</span>
           </Button>
           <Button
             style={{ height: "3rem" }}
-            onClick={() => window.open("https://github.com/Deiahri", "_blank")}
+            onClick={handleGithubClick}
           >
             <FaGithub size={"1.25rem"} style={{ marginRight: "0.5rem" }} />
             <span style={{ fontSize: "1.25rem" }}>Github</span>

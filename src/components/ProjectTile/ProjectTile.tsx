@@ -3,17 +3,23 @@ import { useNavigate } from "react-router";
 import { Self } from "../../Self";
 import SkillTile from "../SkillTile/SkillTile";
 import { GoChevronRight } from "react-icons/go";
+import { usePostHog } from "@posthog/react";
+import useAnalytics from "@/hooks/useAnalytics";
 
 export default function ProjectTile({ projectKey }: { projectKey: string }) {
   const projectData = Self.projects[projectKey];
   const navigate = useNavigate();
+  const { posthog } = useAnalytics();
   const { skills, subtitle, img, banner } = projectData;
 
   const handleViewProjectClick = () => {
+    posthog?.capture("project_viewed", {
+      project_name: projectKey,
+      project_subtitle: subtitle,
+      project_skills: skills,
+    });
     navigate(`/project?key=${projectKey}`);
     window.scrollTo({ top: 0 });
-    // setTimeout(() => {
-    // }, 50);
   };
 
   return (
@@ -88,7 +94,11 @@ export default function ProjectTile({ projectKey }: { projectKey: string }) {
           className={styles.ProjectViewButton}
         >
           <span style={{ fontWeight: 700, marginRight: "0.3rem" }}>View</span>
-          <GoChevronRight className={styles.ProjectViewButtonContent} strokeWidth={0.2} size={"1.5rem"} />
+          <GoChevronRight
+            className={styles.ProjectViewButtonContent}
+            strokeWidth={0.2}
+            size={"1.5rem"}
+          />
         </button>
       </div>
     </div>
@@ -117,7 +127,7 @@ export function ProjectTileBanner({
         style={{
           backgroundColor: color,
           zIndex: 1,
-          position: 'relative'
+          position: "relative",
         }}
         className={styles.ProjectTileBanner}
       >

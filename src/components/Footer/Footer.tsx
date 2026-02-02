@@ -1,3 +1,4 @@
+import useAnalytics from "@/hooks/useAnalytics";
 import { sleep } from "@/tools";
 import { StateMapObj } from "@/types";
 import { Copy } from "lucide-react";
@@ -5,12 +6,17 @@ import { useEffect, useRef, useState } from "react";
 import { BsLinkedin } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
+import { useLocation } from "react-router";
 
 const email = "Junda.yin1@gmail.com";
 export default function Footer() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  console.log("Current URL Path:", currentPath);
   const containingDiv = useRef<HTMLDivElement>(null);
   const animated = useRef(false);
   const [stateMap, setStateMap] = useState<StateMapObj>({});
+    const { posthog } = useAnalytics();
 
   const emerge = (key: string) => {
     return stateMap[key] ? "emerge" : "";
@@ -71,12 +77,26 @@ export default function Footer() {
       .writeText(email)
       .then(() => {
         setCopied(1);
+        posthog?.capture('email_copied', {
+          email: email,
+          success: true,
+        });
         ResetAfterTimeout();
       })
       .catch(() => {
         setCopied(-1);
+        posthog?.capture('email_copied', {
+          email: email,
+          success: false,
+        });
         ResetAfterTimeout();
       });
+  }
+
+  function handleLinkedInClick() {
+    posthog?.capture('linkedin_clicked', {
+      linkedin_url: 'https://www.linkedin.com/in/junda-yin/',
+    });
   }
 
   function ResetAfterTimeout() {
@@ -84,6 +104,8 @@ export default function Footer() {
       setCopied(0);
     }, 1000);
   }
+
+
 
   return (
     <div
@@ -170,6 +192,7 @@ export default function Footer() {
             }}
             href="https://www.linkedin.com/in/junda-yin/"
             target="_blank"
+            onClick={handleLinkedInClick}
           >
             <BsLinkedin size="2rem" />
             <span
@@ -191,6 +214,9 @@ export default function Footer() {
       <span style={{ color: "#fff9", fontSize: "1rem", zIndex: 0 }}>
         Junda Yin © {new Date().getFullYear()}. All rights reserved.
       </span>
+      <a href='/privacy' style={{ color: "#fff9", fontSize: "1rem", zIndex: 0, cursor: 'pointer' }}>
+        Privacy Policy
+      </a>
       <div style={{ height: "10vh" }} />
     </div>
   );

@@ -227,6 +227,44 @@ export const Self: {
     "Strapi",
   ],
   projects: {
+    "UHD ACM Website": {
+      img: "/projects/uhdacm/uhdacm.png",
+      imgs: [
+        {
+          type: "youtube",
+          src: "yke5VbC_7vU",
+          thumbnail: "/projects/uhdacm/yt1-thumb.png",
+        },
+        { type: "image", src: "/projects/uhdacm/uhdacm.png" },
+        { type: "image", src: "/projects/uhdacm/2.png" },
+        { type: "image", src: "/projects/uhdacm/3.png" },
+        { type: "image", src: "/projects/uhdacm/4.png" },
+      ],
+      subtitle: "Official website for UHD ACM chapter",
+      desc: `I led the redesign of the UHD ACM Club website, turning it from a static page into a dynamic CMS platform serving 200+ members.
+<br/><br/>
+Built with Next.js and Strapi, it boosted event attendance by 50% and made content updates effortless.
+<br/><br/>
+See it live at uhdacm.org
+<br/>(or click the button below).`,
+      skills: ["Next.js", "React.js", "TypeScript", "Strapi"],
+      buttons: [
+        {
+          text: "Live Site",
+          href: "https://uhdacm.org",
+          icon: 'Website'
+        },
+        {
+          text: "Source Code",
+          href: "https://github.com/Deiahri/portfolio-v2",
+          icon: 'Code'
+        },
+      ],
+      banner: {
+        text: "Live Site",
+        color: blue,
+      },
+    },
     "Club Mentorship Portal": {
       img: "/projects/uhdacm-mp/1.png",
       imgs: [
@@ -268,44 +306,6 @@ The project highlights collaborative, open-source development and a shared missi
           icon: "Code",
         },
       ],
-    },
-    "UHD ACM Website": {
-      img: "/projects/uhdacm/uhdacm.png",
-      imgs: [
-        {
-          type: "youtube",
-          src: "yke5VbC_7vU",
-          thumbnail: "/projects/uhdacm/yt1-thumb.png",
-        },
-        { type: "image", src: "/projects/uhdacm/uhdacm.png" },
-        { type: "image", src: "/projects/uhdacm/2.png" },
-        { type: "image", src: "/projects/uhdacm/3.png" },
-        { type: "image", src: "/projects/uhdacm/4.png" },
-      ],
-      subtitle: "Official website for UHD ACM chapter",
-      desc: `I led the redesign of the UHD ACM Club website, turning it from a static page into a dynamic CMS platform serving 200+ members.
-<br/><br/>
-Built with Next.js and Strapi, it boosted event attendance by 50% and made content updates effortless.
-<br/><br/>
-See it live at uhdacm.org
-<br/>(or click the button below).`,
-      skills: ["Next.js", "React.js", "TypeScript", "Strapi"],
-      buttons: [
-        {
-          text: "Live Site",
-          href: "https://uhdacm.org",
-          icon: 'Website'
-        },
-        {
-          text: "Source Code",
-          href: "https://github.com/Deiahri/portfolio-v2",
-          icon: 'Code'
-        },
-      ],
-      banner: {
-        text: "Live Site",
-        color: blue,
-      },
     },
     "Live Sensor Data Research": {
       img: "/projects/sensor-data/0.png",
