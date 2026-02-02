@@ -1,7 +1,6 @@
 import { useConsentContext } from "@/context/ConsentContext";
 import { useEffect, useState } from "react";
 import { LuThumbsUp } from "react-icons/lu";
-import { RiSpyLine } from "react-icons/ri";
 
 export default function AnalyticsBanner() {
   const { hasConsent, setHasConsent } = useConsentContext();
@@ -19,9 +18,6 @@ export default function AnalyticsBanner() {
     }, 500);
   }, [hasConsent]);
 
-  const handleToggleConsent = () => {
-    setHasConsent(!hasConsent);
-  };
 
   return (
     <div

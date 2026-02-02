@@ -9,7 +9,6 @@ import { sleep } from "@/tools";
 import { useEffect, useRef, useState } from "react";
 import { StateMapObj } from "@/types";
 import { IoIosArrowRoundDown } from "react-icons/io";
-import { usePostHog } from "@posthog/react";
 import useAnalytics from "@/hooks/useAnalytics";
 import Footer from "@/components/Footer/Footer";
 export default function ProjectPage() {

@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider, useRouteError, isRouteErrorRespons
 import HomePage from './pages/HomePage'
 import ProjectPage from './pages/ProjectPage'
 import Page404 from './pages/Page404'
-import Footer from './components/Footer/Footer'
 import ParallaxBG from './components/ParallaxBG/ParallaxBG'
 import useAnalytics from './hooks/useAnalytics'
 import AnalyticsBanner from './components/AnalyticsBanner/AnalyticsBanner'

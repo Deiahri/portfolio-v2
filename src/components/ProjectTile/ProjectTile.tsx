@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 import { Self } from "../../Self";
 import SkillTile from "../SkillTile/SkillTile";
 import { GoChevronRight } from "react-icons/go";
-import { usePostHog } from "@posthog/react";
 import useAnalytics from "@/hooks/useAnalytics";
 
 export default function ProjectTile({ projectKey }: { projectKey: string }) {

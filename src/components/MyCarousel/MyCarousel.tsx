@@ -10,7 +10,6 @@ import { CarouselItem as CarouselItemType } from "@/Self";
 import { useEffect, useState, useRef } from "react";
 import YouTubeEmbed from "../YouTubeEmbed/YouTubeEmbed";
 import { FaCirclePlay } from "react-icons/fa6";
-import { usePostHog } from "@posthog/react";
 import useAnalytics from "@/hooks/useAnalytics";
 
 export default function MyCarousel({ imgs }: { imgs?: CarouselItemType[] }) {
