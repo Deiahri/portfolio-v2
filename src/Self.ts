@@ -40,16 +40,19 @@ type Projects = {
   [projectName: string]: Project;
 };
 
-export const Self: {
+type SelfData = {
   skills: {
     [skill: string]: Skill;
   };
   languages: string[];
   framelibs: string[];
   databases: string[];
+  ai: string[];
   other: string[];
   projects: Projects;
-} = {
+};
+
+export const Self: SelfData = {
   skills: {
     // Skills section remains unchanged
     // Languages
@@ -127,6 +130,22 @@ export const Self: {
       color: "#7952b333",
       icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png",
     },
+    Figma: {
+      color: "#f24e1e33",
+      icon: "/logos/figma.svg",
+    },
+    LangChain: {
+      color: "#fff3",
+      icon: "/logos/langchain.webp",
+    },
+    Gemini: {
+      color: "#8e75ff33",
+      icon: "/logos/gemini.png",
+    },
+    Pinecone: {
+      color: "#80f3e433",
+      icon: "/logos/pinecone.webp",
+    },
 
     // databases
     Firebase: {
@@ -145,8 +164,12 @@ export const Self: {
       color: "#2f679233",
       icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png",
     },
+    ChromaDB: {
+      color: "#7b61ff33",
+      icon: "/logos/chromadb.png",
+    },
     MySQL: {
-      color: "#33989b33",
+      color: "#13485b33",
       icon: "https://cdn.worldvectorlogo.com/logos/mysql-logo-pure.svg",
     },
 
@@ -163,6 +186,10 @@ export const Self: {
       color: "#66006633",
       icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Mqtt-hor.svg/1280px-Mqtt-hor.svg.png",
     },
+    Clerk: {
+      color: "#6c47ff33",
+      icon: "/logos/clerk.svg",
+    },
     Auth0: {
       color: "#ec531f33",
       icon: "/logos/auth0.png",
@@ -170,10 +197,6 @@ export const Self: {
     "Ubuntu Linux": {
       color: "#dd481433",
       icon: "https://cdn.worldvectorlogo.com/logos/ubuntu-4.svg",
-    },
-    Django: {
-      color: "#09241233",
-      icon: "https://cdn.worldvectorlogo.com/logos/django.svg",
     },
     Arduino: {
       color: "#66c3d533",
@@ -186,6 +209,22 @@ export const Self: {
     Strapi: {
       color: "#2f7bb633",
       icon: "/logos/strapi.jpeg",
+    },
+    PostHog: {
+      color: "#f54e0033",
+      icon: "/logos/posthog.webp",
+    },
+    "Better Stack": {
+      color: "#fff3",
+      icon: "/logos/betterstack.svg",
+    },
+    Jira: {
+      color: "#0052cc33",
+      icon: "/logos/jira.png",
+    },
+    Django: {
+      color: "#09241233",
+      icon: "https://cdn.worldvectorlogo.com/logos/django.svg",
     },
     // CMS: {
     //   color: "#59666633",
@@ -213,23 +252,45 @@ export const Self: {
     "Flask",
     "ROS2",
     "Bootstrap",
+    "Figma",
     "Django",
   ],
-  databases: ["Firebase", "MongoDB", "InfluxDB", "PostgreSQL", "MySQL"],
+  databases: [
+    "Firebase",
+    "MongoDB",
+    "InfluxDB",
+    "PostgreSQL",
+    "MySQL",
+  ],
+  ai: [
+    "LangChain",
+    "Gemini",
+    "ChromaDB",
+    "Pinecone",
+  ],
   other: [
     "Github",
     "AWS",
+    "PostHog",
+    "Better Stack",
+    "Jira",
+    "Strapi",
     // "MQTT",
+    "Clerk",
     "Auth0",
     "Ubuntu Linux",
     "Arduino",
     "Unity",
-    "Strapi",
   ],
   projects: {
-    "UHD ACM Website": {
+    "UHDACM Site (w Chatbot)": {
       img: "/projects/uhdacm/uhdacm.png",
       imgs: [
+        {
+          type: "youtube",
+          src: "P-i9Zv2IOXs",
+          thumbnail: "/projects/uhdacm/yt2-thumb.png",
+        },
         {
           type: "youtube",
           src: "yke5VbC_7vU",
@@ -240,29 +301,74 @@ export const Self: {
         { type: "image", src: "/projects/uhdacm/3.png" },
         { type: "image", src: "/projects/uhdacm/4.png" },
       ],
-      subtitle: "Official website for UHD ACM chapter",
+      subtitle:
+        "Official website for UHD ACM chapter. Features Chatbot + 3 incoming features.",
       desc: `I led the redesign of the UHD ACM Club website, turning it from a static page into a dynamic CMS platform serving 200+ members.
 <br/><br/>
 Built with Next.js and Strapi, it boosted event attendance by 50% and made content updates effortless.
 <br/><br/>
+Currently leading a team of 7, including designers, engineers, and a project managers. Features not seen on main site are being developed or on <a href="https://test.uhdacm.org" target="_blank">beta site</a> (request access).
+<br/><br/>
 See it live at uhdacm.org
 <br/>(or click the button below).`,
-      skills: ["Next.js", "React.js", "TypeScript", "Strapi"],
+      skills: [
+        "Next.js",
+        // "React.js",
+        "TypeScript",
+        "Strapi",
+        "LangChain",
+        "ChromaDB",
+        "Gemini",
+        "PostHog",
+        "Better Stack",
+        "Clerk",
+        "Jira",
+        "Figma"
+      ],
       buttons: [
         {
           text: "Live Site",
           href: "https://uhdacm.org",
-          icon: 'Website'
+          icon: "Website",
         },
         {
           text: "Source Code",
-          href: "https://github.com/UHDACM/UHDACM-Site",
-          icon: 'Code'
+          href: "https://github.com/UHDACM/UHDACM-Site/tree/dev",
+          icon: "Code",
         },
       ],
       banner: {
         text: "Live Site",
         color: blue,
+      },
+    },
+    DumDrive: {
+      img: "/projects/dumdrive/dum.png",
+      imgs: [
+        {
+          type: "youtube",
+          src: "IN_nBOw6w-g",
+          thumbnail: "/projects/dumdrive/dum.png",
+        },
+        { type: "image", src: "/projects/dumdrive/dum.png" },
+      ],
+      subtitle: "Google Drive clone with file management and sharing",
+      desc: `Built a Google Drive-style file platform with support for file uploads and downloads, folder creation, and permission-based sharing.
+<br/><br/>
+The stack uses <b>Next.js</b>, <b>Clerk</b>, <b>Express.js</b>, and <b>AWS</b>.
+<br/><br/>
+This project is still a work in progress and is currently rough around the edges.`,
+      skills: ["Next.js", "Clerk", "Express.js", "AWS"],
+      buttons: [
+        {
+          text: "Source Code",
+          href: "https://github.com/Deiahri/DumDrive",
+          icon: "Code",
+        },
+      ],
+      banner: {
+        text: "Video",
+        color: red,
       },
     },
     "Club Mentorship Portal": {
@@ -293,6 +399,7 @@ The project highlights collaborative, open-source development and a shared missi
         "Vitest",
         "SocketIO",
         "Firebase",
+        "ChromaDB",
         "Auth0",
       ],
       banner: {
@@ -306,6 +413,33 @@ The project highlights collaborative, open-source development and a shared missi
           icon: "Code",
         },
       ],
+    },
+    Cookaroo: {
+      img: "/projects/cookaroo/thumb.png",
+      imgs: [
+        {
+          type: "youtube",
+          src: "CE5bYO-tpv8",
+          thumbnail: "/projects/cookaroo/thumb.png",
+        },
+        { type: "image", src: "/projects/cookaroo/thumb.png" },
+        { type: "image", src: "/projects/cookaroo/1.png" },
+        { type: "image", src: "/projects/cookaroo/2.png" },
+      ],
+      subtitle:
+        "AI-powered nutrition-first recipe assistant designed through product and UX research",
+      desc: `As Product Manager, I led a cross-functional team of 2 developers and 2 researchers to define and design a food-focused application from concept to prototype.
+<br/><br/>
+We built <b>Cookaroo</b>, an AI-powered experience that helps people discover recipes aligned with macros, allergies, and other health needs.
+<br/><br/>
+Its flagship assistant, <b>Chef Sue</b>, supports users through text and chat to recommend meals and guide them step-by-step while cooking.
+<br/><br/>
+This project focused heavily on product thinking, user-centered design, and rapid iteration.`,
+      skills: ["React.js", "Figma"],
+      banner: {
+        text: "Video",
+        color: red,
+      },
     },
     "Live Sensor Data Research": {
       img: "/projects/sensor-data/0.png",
@@ -485,4 +619,4 @@ The project highlights collaborative, open-source development and a shared missi
       },
     },
   },
-};
+} as const;

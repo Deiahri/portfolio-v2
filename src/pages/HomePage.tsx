@@ -191,10 +191,11 @@ function SkillsSection() {
 
   const languageDiv = useRef<HTMLDivElement>(null);
   const frameLibDiv = useRef<HTMLDivElement>(null);
+  const aiDiv = useRef<HTMLDivElement>(null);
   const dBDiv = useRef<HTMLDivElement>(null);
   const otherDiv = useRef<HTMLDivElement>(null);
 
-  const refArr = [skillsDiv, languageDiv, frameLibDiv, dBDiv, otherDiv];
+  const refArr = [skillsDiv, languageDiv, frameLibDiv, aiDiv, dBDiv, otherDiv];
 
   const [stateMap, setStateMap] = useState<StateMapObj>({});
 
@@ -401,6 +402,38 @@ function SkillsSection() {
                 return (
                   <SkillTile
                     key={`databases_${skill}`}
+                    skill={skill}
+                    // visible={emerge("databases"+sIndex)? true:false}
+                    {...skillObj}
+                  />
+                );
+              })}
+            </div>
+          </div>
+
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+            id="ai"
+            ref={aiDiv}
+            className={`floatIn ${emerge("ai")}`}
+          >
+            {/* Databases */}
+            <span style={{ fontSize: "1.5rem" }}>AI</span>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                alignItems: "start",
+                gap: "0.5rem",
+              }}
+            >
+              {Self.ai.map((skill) => {
+                const skillObj = Self.skills[skill];
+                return (
+                  <SkillTile
+                    key={`ai_${skill}`}
                     skill={skill}
                     // visible={emerge("databases"+sIndex)? true:false}
                     {...skillObj}
