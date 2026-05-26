@@ -1,5 +1,5 @@
 import Button from "../components/Button/Button";
-import { BsDownload } from "react-icons/bs";
+// import { BsDownload } from "react-icons/bs";
 import { GoChevronRight } from "react-icons/go";
 import SkillTile from "../components/SkillTile/SkillTile";
 import { Self } from "../Self";
