@@ -495,15 +495,15 @@ function TopSection() {
     }, 10);
   };
 
-  const handleResumeClick = () => {
-    posthog?.capture('resume_clicked', {
-      resume_url: 'https://drive.google.com/file/d/1ubDxHPiYgDOHqFL1l_cwv0TLkLQvwoOP/view?usp=sharing'
-    });
-    window.open(
-      "https://drive.google.com/file/d/1ubDxHPiYgDOHqFL1l_cwv0TLkLQvwoOP/view?usp=sharing",
-      "_blank"
-    );
-  };
+  // const handleResumeClick = () => {
+  //   posthog?.capture('resume_clicked', {
+  //     resume_url: 'https://drive.google.com/file/d/1ubDxHPiYgDOHqFL1l_cwv0TLkLQvwoOP/view?usp=sharing'
+  //   });
+  //   window.open(
+  //     "https://drive.google.com/file/d/1ubDxHPiYgDOHqFL1l_cwv0TLkLQvwoOP/view?usp=sharing",
+  //     "_blank"
+  //   );
+  // };
 
   const handleGithubClick = () => {
     posthog?.capture('github_profile_clicked', {
@@ -706,13 +706,13 @@ function TopSection() {
           }}
           className={`emergeFromBlur ${emerge("buttons")}`}
         >
-          <Button
+          {/* <Button
             style={{ height: "3rem" }}
             onClick={handleResumeClick}
           >
             <BsDownload size={"1.25rem"} style={{ marginRight: "0.5rem" }} />
             <span style={{ fontSize: "1.25rem" }}>Resume</span>
-          </Button>
+          </Button> */}
           <Button
             style={{ height: "3rem" }}
             onClick={handleGithubClick}
